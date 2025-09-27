@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Villas de Carhuaz</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+        body {
+            margin: 0;
+            font-family: 'Fredoka One', Arial, sans-serif;
+            background: #388e3c;
+            color: #fff;
+        }
+        .top-bar {
+            background: #388e3c;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 2vw 5vw 0 5vw;
+        }
+        .title {
+            font-size: 2.5vw;
+            font-weight: bold;
+            line-height: 1.1;
+            margin-top: 0.5vw;
+        }
+        .logo-box {
+            background: #174e95;
+            border-radius: 0.5vw;
+            padding: 1vw 2vw;
+            margin-left: 2vw;
+            display: flex;
+            align-items: center;
+            height: 100px;
+        }
+        .logo-img {
+            width: 70px;
+            margin-right: 1vw;
+        }
+        .logo-text {
+            font-size: 1.2vw;
+            color: #fff;
+            font-family: inherit;
+        }
+        .main-img-section {
+            position: relative;
+            width: 100vw;
+            height: 23vw;
+            overflow: hidden;
+        }
+        .main-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .visit-btn {
+            position: absolute;
+            left: 5vw;
+            bottom: 2vw;
+            background: #FFD43B;
+            color: #222;
+            font-size: 2vw;
+            font-family: inherit;
+            padding: 1vw 3vw;
+            border-radius: 2vw;
+            font-weight: bold;
+            box-shadow: 1px 3px 8px rgba(0,0,0,0.1);
+        }
+        .gallery {
+            display: flex;
+            width: 90vw;
+            margin: 2vw auto 0 auto;
+            gap: 2vw;
+        }
+        .gallery-img {
+            width: 100%;
+            height: 13vw;
+            object-fit: cover;
+            border-radius: 0.7vw;
+            box-shadow: 0 0 8px rgba(0,0,0,0.08);
+        }
+        .gallery > div {
+            flex: 1;
+        }
+        .bottom-section {
+            background: #388e3c;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 2vw 5vw 2vw 5vw;
+            margin-top: 2vw;
+        }
+        .qr-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .qr-img {
+            width: 110px;
+            height: 110px;
+            background: #fff;
+            border-radius: 0.5vw;
+            margin-bottom: 0.7vw;
+        }
+        .info-label {
+            font-size: 1vw;
+            margin-left: 0.3vw;
+            font-weight: bold;
+        }
+        .info-phone {
+            font-size: 1.3vw;
+            font-weight: bold;
+            color: #fff;
+        }
+        .contact-box {
+            background: #fff;
+            border-radius: 0.6vw;
+            margin-top: 0.5vw;
+            padding: 0.6vw 1vw;
+            color: #222;
+            display: flex;
+            align-items: center;
+            font-size: 1vw;
+            width: 13vw;
+            margin-bottom: 0.5vw;
+        }
+        .contact-icon {
+            margin-right: 0.8vw;
+            font-size: 1.2vw;
+        }
+        .price-box {
+            background: #174e95;
+            border-radius: 0.7vw;
+            padding: 2vw 3vw;
+            color: #fff;
+            font-size: 2vw;
+            text-align: center;
+            font-family: inherit;
+            font-weight: bold;
+            box-shadow: 1px 3px 8px rgba(0,0,0,0.08);
+        }
+        .price-box small {
+            display: block;
+            font-size: 1.1vw;
+            margin-top: 0.5vw;
+            font-weight: normal;
+        }
+        @media (max-width: 1000px) {
+            .top-bar, .bottom-section { flex-direction: column; align-items: flex-start; }
+            .gallery { flex-direction: column; gap: 2vw; }
+            .price-box, .qr-info { width: 100%; }
+            .price-box { font-size: 4vw; }
+            .contact-box, .info-label, .info-phone { font-size: 2.2vw; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="title">
+            TU LOTE AMPLIO<br>PARA TODA LA FAMILIA
+        </div>
+        <div class="logo-box">
+            <img class="logo-img" src="logo-lasvillas.png" alt="Las Villas de Carhuaz logo">
+            <div class="logo-text">
+                LAS VILLAS<br>DE CARHUAZ
+            </div>
+        </div>
+    </div>
+
+    <div class="main-img-section">
+        <img class="main-img" src="carretera.jpg" alt="Carretera Proyecto Las Villas">
+        <div class="visit-btn">VISITA NUESTRO PROYECTO</div>
+    </div>
+
+    <div class="gallery">
+        <div>
+            <img class="gallery-img" src="vista-aerea.jpg" alt="Vista aérea del proyecto">
+        </div>
+        <div>
+            <img class="gallery-img" src="plaza.jpg" alt="Plaza principal Carhuaz">
+        </div>
+        <div>
+            <img class="gallery-img" src="playa.jpg" alt="Playa cerca del proyecto">
+        </div>
+    </div>
+
+    <div class="bottom-section">
+        <div class="qr-info">
+            <img class="qr-img" src="qr.png" alt="QR Información">
+            <div class="info-label">INFORMACIÓN</div>
+            <div class="info-phone">957320891</div>
+            <div class="contact-box"><span class="contact-icon">&#128100;</span> Asesor de Ventas</div>
+            <div class="contact-box"><span class="contact-icon">&#128222;</span></div>
+        </div>
+        <div class="price-box">
+            LOTES DESDE<br>
+            300 M2<br>
+            S/ 10,000
+            <small>AL CONTADO</small>
+        </div>
+    </div>
+</body>
+</html>

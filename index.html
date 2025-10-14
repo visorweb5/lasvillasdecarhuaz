@@ -8,63 +8,100 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
   <style>
     :root {
-      --color-primario: #1e3a8a;
-      --color-secundario: #0ea5e9;
-      --color-dorado: #facc15;
-      --color-claro: #f9fafb;
+      --azul: #1e3a8a;
+      --celeste: #0ea5e9;
+      --dorado: #facc15;
+      --gris-claro: #f9fafb;
     }
 
     html { scroll-behavior: smooth; }
-    body { font-family: 'Segoe UI', sans-serif; background-color: var(--color-claro); color: #111; overflow-x: hidden; }
+    body { font-family: 'Segoe UI', sans-serif; background: var(--gris-claro); color: #111; overflow-x: hidden; }
 
-    /* NAV */
-    .navbar { background: rgba(255,255,255,0.95); box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+    /* NAVBAR */
+    .navbar {
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: background 0.3s;
+    }
     .navbar-brand img { height: 60px; }
     .nav-link { color: #111 !important; font-weight: 500; margin-left: 1rem; transition: 0.3s; }
-    .nav-link:hover { color: var(--color-secundario) !important; }
+    .nav-link:hover { color: var(--celeste) !important; }
 
     /* HERO PARALLAX */
     .hero {
       height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('xd 2.png') center/cover fixed no-repeat;
-      color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('Blue and White Modern Real Estate Marketing Instagram Post.png') center/cover fixed no-repeat;
+      color: white; display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 0 1rem;
     }
     .hero h1 { font-size: 3.2rem; font-weight: 700; }
     .hero p { font-size: 1.3rem; }
-    .hero .btn { margin-top: 2rem; background-color: var(--color-dorado); border: none; font-weight: 600; border-radius: 50px; padding: 0.8rem 2rem; }
-    .hero .btn:hover { background-color: white; color: var(--color-primario); }
+    .hero .btn {
+      margin-top: 2rem; background-color: var(--dorado); border: none;
+      font-weight: 600; border-radius: 50px; padding: 0.9rem 2rem; color: #111;
+    }
+    .hero .btn:hover { background-color: white; color: var(--azul); }
 
     /* SECCIONES */
     section { padding: 5rem 0; }
-    .section-title { color: var(--color-primario); font-weight: 700; margin-bottom: 2.5rem; text-align: center; }
+    .section-title {
+      color: var(--azul);
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
 
     /* INFO RÁPIDA */
     .info-card {
-      background: white; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      background: white; border-radius: 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       padding: 2rem 1rem; text-align: center; transition: transform 0.3s ease;
     }
     .info-card:hover { transform: translateY(-6px); }
-    .info-card i { font-size: 2rem; color: var(--color-primario); margin-bottom: 0.5rem; }
+    .info-card i { font-size: 2rem; color: var(--azul); margin-bottom: 0.5rem; }
 
-    /* DESCRIPCIÓN */
-    .descripcion img { border-radius: 16px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+    /* SLIDER */
+    .carousel-item img { border-radius: 12px; height: 500px; object-fit: cover; }
 
-    /* GALERÍA */
-    .galeria img {
-      width: 100%; border-radius: 12px; transition: transform 0.4s;
+    /* BENEFICIOS */
+    .feature-card {
+      background: white; border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 2rem 1rem; transition: transform 0.3s ease; text-align: center;
     }
-    .galeria img:hover { transform: scale(1.05); }
+    .feature-card:hover { transform: translateY(-6px); }
+    .feature-card i { font-size: 2.3rem; color: var(--azul); margin-bottom: 0.5rem; }
+
+    /* TESTIMONIOS */
+    .testimonial {
+      background: white; border-left: 4px solid var(--celeste);
+      border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .testimonial p { font-style: italic; }
+    .testimonial h6 { font-weight: 700; color: var(--azul); }
 
     /* CONTACTO */
-    .contacto {
-      background: var(--color-primario); color: white; text-align: center;
-    }
+    .contacto { background: var(--azul); color: white; text-align: center; }
     .contacto .btn {
-      background: var(--color-dorado); border: none; font-weight: 600; border-radius: 50px;
+      background: var(--dorado); border: none;
+      font-weight: 600; border-radius: 50px; padding: 0.8rem 2rem;
     }
 
     /* FOOTER */
-    footer { background: #0f172a; color: #cbd5e1; text-align: center; padding: 2rem 0; font-size: 0.9rem; }
+    footer {
+      background: #0f172a; color: #cbd5e1;
+      text-align: center; padding: 2rem 0; font-size: 0.9rem;
+    }
+
+    /* BOTÓN FLOTANTE */
+    .whatsapp-float {
+      position: fixed; bottom: 25px; right: 25px;
+      background-color: #25d366; color: white;
+      border-radius: 50%; width: 60px; height: 60px;
+      display: flex; justify-content: center; align-items: center;
+      font-size: 2rem; z-index: 999; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .whatsapp-float:hover { background-color: #20b858; text-decoration: none; }
+
   </style>
 </head>
 <body>
@@ -73,7 +110,7 @@
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#">
-        <img src="logo.png" alt="Las Villas de Carhuaz" class="me-2"> Las Villas de Carhuaz
+        <img src="logo.png" alt="Las Villas de Carhuaz"> Las Villas de Carhuaz
       </a>
       <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
@@ -81,8 +118,8 @@
       <div id="navbarNav" class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
           <li class="nav-item"><a href="#proyecto" class="nav-link">Proyecto</a></li>
+          <li class="nav-item"><a href="#slider" class="nav-link">Galería</a></li>
           <li class="nav-item"><a href="#beneficios" class="nav-link">Beneficios</a></li>
-          <li class="nav-item"><a href="#galeria" class="nav-link">Galería</a></li>
           <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
         </ul>
       </div>
@@ -90,13 +127,13 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
-    <h1>Encuentra tu lugar ideal<br>en Las Villas de Carhuaz</h1>
+  <header class="hero">
+    <h1>Encuentra tu lugar ideal<br>en <span style="color: var(--dorado)">Las Villas de Carhuaz</span></h1>
     <p>El lugar perfecto para construir la casa de tus sueños o invertir en tu futuro.</p>
     <a href="#proyecto" class="btn btn-lg">Descubre Más</a>
-  </section>
+  </header>
 
-  <!-- INFO RÁPIDA -->
+  <!-- INFO DEL PROYECTO -->
   <section id="proyecto" class="container">
     <h2 class="section-title">Datos del Proyecto</h2>
     <div class="row g-4">
@@ -107,44 +144,52 @@
     </div>
   </section>
 
-  <!-- DESCRIPCIÓN -->
-  <section class="descripcion container">
-    <div class="row align-items-center">
-      <div class="col-md-6 mb-4">
-        <h2 class="section-title text-start">Sobre Las Villas de Carhuaz</h2>
-        <p>Ubicado en una zona de crecimiento, con accesos afirmados, rodeado de naturaleza y tranquilidad. Ideal para quienes buscan invertir o construir el hogar familiar.</p>
-        <ul>
-          <li>✅ Fácil acceso por carretera</li>
-          <li>✅ Zona segura y urbanizada</li>
-          <li>✅ Oportunidad de valorización</li>
-        </ul>
-        <a href="#contacto" class="btn btn-primary mt-3">Solicitar Información</a>
+  <!-- SLIDER -->
+  <section id="slider" class="container">
+    <h2 class="section-title">Galería del Proyecto</h2>
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner rounded">
+        <div class="carousel-item active"><img src="foto1.jpg" class="d-block w-100" alt="Vista 1"></div>
+        <div class="carousel-item"><img src="foto2.jpg" class="d-block w-100" alt="Vista 2"></div>
+        <div class="carousel-item"><img src="foto3.jpg" class="d-block w-100" alt="Vista 3"></div>
       </div>
-      <div class="col-md-6 text-center">
-        <img src="xd 2.png" class="img-fluid" alt="Proyecto Las Villas de Carhuaz">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section id="beneficios" class="bg-light">
+    <div class="container text-center">
+      <h2 class="section-title">Beneficios del Proyecto</h2>
+      <div class="row g-4">
+        <div class="col-md-3 col-6"><div class="feature-card"><i class="bi bi-house-door"></i><h5>Zona Segura</h5><p>Urbanización con tranquilidad.</p></div></div>
+        <div class="col-md-3 col-6"><div class="feature-card"><i class="bi bi-road"></i><h5>Accesos Afirmados</h5><p>Conexión directa a carretera.</p></div></div>
+        <div class="col-md-3 col-6"><div class="feature-card"><i class="bi bi-tree"></i><h5>Entorno Natural</h5><p>Rodeado de áreas verdes.</p></div></div>
+        <div class="col-md-3 col-6"><div class="feature-card"><i class="bi bi-graph-up"></i><h5>Alta Rentabilidad</h5><p>Oportunidad de inversión.</p></div></div>
       </div>
     </div>
   </section>
 
-  <!-- GALERÍA -->
-  <section id="galeria" class="container">
-    <h2 class="section-title">Galería del Proyecto</h2>
-    <div class="row g-3 galeria">
-      <div class="col-md-4"><img src="foto1.jpg" alt="Vista aérea"></div>
-      <div class="col-md-4"><img src="foto2.jpg" alt="Lotes"></div>
-      <div class="col-md-4"><img src="foto3.jpg" alt="Entorno natural"></div>
+  <!-- TESTIMONIOS -->
+  <section class="container">
+    <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+    <div class="row g-4">
+      <div class="col-md-4"><div class="testimonial"><p>“Excelente atención, compré mi lote y el proceso fue muy claro.”</p><h6>– Carla M.</h6></div></div>
+      <div class="col-md-4"><div class="testimonial"><p>“Buena ubicación y precio justo. Muy satisfecho con mi inversión.”</p><h6>– Juan R.</h6></div></div>
+      <div class="col-md-4"><div class="testimonial"><p>“Una experiencia segura y confiable, todo bien documentado.”</p><h6>– Luis P.</h6></div></div>
     </div>
   </section>
 
   <!-- MAPA -->
-  <section class="container py-5">
+  <section class="container">
     <h2 class="section-title">Ubicación Estratégica</h2>
     <div class="ratio ratio-16x9 shadow rounded">
-      <iframe
-        src="https://www.google.com/maps?q=-9.2837,-77.6424&hl=es;z=14&output=embed"
-        allowfullscreen
-        loading="lazy">
-      </iframe>
+      <iframe src="https://www.google.com/maps?q=-9.2837,-77.6424&hl=es;z=14&output=embed" allowfullscreen loading="lazy"></iframe>
     </div>
   </section>
 
@@ -153,7 +198,7 @@
     <div class="container">
       <h2 class="fw-bold mb-3">¡Contáctanos Hoy!</h2>
       <p>Asesor de ventas disponible para brindarte toda la información.</p>
-      <form onsubmit="redirigirWhatsApp(event)" class="mt-4 container" style="max-width:600px;">
+      <form onsubmit="redirigirWhatsApp(event)" class="mt-4 mx-auto" style="max-width:600px;">
         <div class="mb-3">
           <input type="text" id="nombre" class="form-control" placeholder="Tu nombre" required />
         </div>
@@ -170,6 +215,11 @@
     <p class="mb-0">&copy; 2025 Las Villas de Carhuaz | Con el respaldo de ELIKIM S.A.C.</p>
   </footer>
 
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/51957320891" target="_blank" class="whatsapp-float">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
   <script>
     function redirigirWhatsApp(e) {
       e.preventDefault();
@@ -179,7 +229,6 @@
       window.open(`https://wa.me/51957320891?text=${texto}`, "_blank");
     }
   </script>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

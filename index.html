@@ -1,182 +1,184 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Las Villas de Carhuaz - Tu lote ideal</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Las Villas de Carhuaz - Proyecto Inmobiliario</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
   <style>
     :root {
-      --primary-color: #1e3a8a;
-      --secondary-color: #facc15;
+      --color-primario: #1e3a8a;
+      --color-secundario: #0ea5e9;
+      --color-dorado: #facc15;
+      --color-claro: #f9fafb;
     }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f9fafb;
-    }
-    nav.navbar {
-      background: white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-    .logo {
-      height: 60px;
-    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', sans-serif; background-color: var(--color-claro); color: #111; overflow-x: hidden; }
+
+    /* NAV */
+    .navbar { background: rgba(255,255,255,0.95); box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+    .navbar-brand img { height: 60px; }
+    .nav-link { color: #111 !important; font-weight: 500; margin-left: 1rem; transition: 0.3s; }
+    .nav-link:hover { color: var(--color-secundario) !important; }
+
+    /* HERO PARALLAX */
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('xd 2.png') center/cover no-repeat;
-      height: 80vh;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('xd 2.png') center/cover fixed no-repeat;
+      color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
     }
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 700;
+    .hero h1 { font-size: 3.2rem; font-weight: 700; }
+    .hero p { font-size: 1.3rem; }
+    .hero .btn { margin-top: 2rem; background-color: var(--color-dorado); border: none; font-weight: 600; border-radius: 50px; padding: 0.8rem 2rem; }
+    .hero .btn:hover { background-color: white; color: var(--color-primario); }
+
+    /* SECCIONES */
+    section { padding: 5rem 0; }
+    .section-title { color: var(--color-primario); font-weight: 700; margin-bottom: 2.5rem; text-align: center; }
+
+    /* INFO RÁPIDA */
+    .info-card {
+      background: white; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 2rem 1rem; text-align: center; transition: transform 0.3s ease;
     }
-    .hero .btn {
-      background: var(--secondary-color);
-      border: none;
-      font-weight: 600;
+    .info-card:hover { transform: translateY(-6px); }
+    .info-card i { font-size: 2rem; color: var(--color-primario); margin-bottom: 0.5rem; }
+
+    /* DESCRIPCIÓN */
+    .descripcion img { border-radius: 16px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+
+    /* GALERÍA */
+    .galeria img {
+      width: 100%; border-radius: 12px; transition: transform 0.4s;
     }
-    .section-title {
-      font-weight: 700;
-      color: var(--primary-color);
-      margin-bottom: 1.5rem;
+    .galeria img:hover { transform: scale(1.05); }
+
+    /* CONTACTO */
+    .contacto {
+      background: var(--color-primario); color: white; text-align: center;
     }
-    .feature-card {
-      border: none;
-      border-radius: 12px;
-      background: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
+    .contacto .btn {
+      background: var(--color-dorado); border: none; font-weight: 600; border-radius: 50px;
     }
-    .feature-card:hover {
-      transform: translateY(-5px);
-    }
-    .feature-card i {
-      font-size: 2.5rem;
-      color: var(--primary-color);
-      margin-bottom: 0.5rem;
-    }
-    footer {
-      background: var(--primary-color);
-      color: white;
-      padding: 2rem 0;
-      text-align: center;
-    }
-    footer a {
-      color: var(--secondary-color);
-      text-decoration: none;
-    }
+
+    /* FOOTER */
+    footer { background: #0f172a; color: #cbd5e1; text-align: center; padding: 2rem 0; font-size: 0.9rem; }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#">
-        <img src="logo.png" class="logo me-2" alt="Las Villas de Carhuaz">
-        Las Villas de Carhuaz
+        <img src="logo.png" alt="Las Villas de Carhuaz" class="me-2"> Las Villas de Carhuaz
       </a>
       <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div id="navbarNav" class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#proyecto">Proyecto</a></li>
-          <li class="nav-item"><a class="nav-link" href="#beneficios">Beneficios</a></li>
-          <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+          <li class="nav-item"><a href="#proyecto" class="nav-link">Proyecto</a></li>
+          <li class="nav-item"><a href="#beneficios" class="nav-link">Beneficios</a></li>
+          <li class="nav-item"><a href="#galeria" class="nav-link">Galería</a></li>
+          <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
   <!-- HERO -->
-  <header class="hero">
-    <div>
-      <h1>Tu lote amplio para toda la familia</h1>
-      <p class="lead mt-3">Lotes desde S/ 10,000 - Carhuaz, Ancash</p>
-      <a href="#proyecto" class="btn btn-lg mt-3">Conoce más</a>
-    </div>
-  </header>
+  <section class="hero">
+    <h1>Encuentra tu lugar ideal<br>en Las Villas de Carhuaz</h1>
+    <p>El lugar perfecto para construir la casa de tus sueños o invertir en tu futuro.</p>
+    <a href="#proyecto" class="btn btn-lg">Descubre Más</a>
+  </section>
 
-  <!-- PROYECTO -->
-  <section id="proyecto" class="container py-5">
-    <div class="row align-items-center">
-      <div class="col-md-6 mb-4 mb-md-0">
-        <h2 class="section-title">Proyecto Las Villas de Carhuaz</h2>
-        <p>Un lugar ideal para construir el hogar que siempre soñaste. Lotes desde 300 m² con excelente ubicación, vías de acceso y una gran oportunidad de inversión.</p>
-        <ul class="list-unstyled mt-3">
-          <li>✅ Lotes desde 300 m²</li>
-          <li>✅ Fácil acceso por carretera</li>
-          <li>✅ Precio único al contado</li>
-        </ul>
-        <a href="#contacto" class="btn btn-primary mt-4">Solicita información</a>
-      </div>
-      <div class="col-md-6">
-        <img src="xd 2.png" alt="Proyecto Las Villas de Carhuaz" class="img-fluid rounded shadow">
-      </div>
+  <!-- INFO RÁPIDA -->
+  <section id="proyecto" class="container">
+    <h2 class="section-title">Datos del Proyecto</h2>
+    <div class="row g-4">
+      <div class="col-md-3 col-6"><div class="info-card"><i class="bi bi-cash-stack"></i><h5>Desde S/ 10,000</h5><p>Pago único al contado</p></div></div>
+      <div class="col-md-3 col-6"><div class="info-card"><i class="bi bi-aspect-ratio"></i><h5>Lotes desde 300 m²</h5><p>Amplios y urbanizados</p></div></div>
+      <div class="col-md-3 col-6"><div class="info-card"><i class="bi bi-geo-alt"></i><h5>Km 23.5 Carretera Carhuaz</h5><p>A solo 15 min de Ica</p></div></div>
+      <div class="col-md-3 col-6"><div class="info-card"><i class="bi bi-lightning-charge"></i><h5>Servicios proyectados</h5><p>Agua y energía</p></div></div>
     </div>
   </section>
 
-  <!-- BENEFICIOS -->
-  <section id="beneficios" class="bg-light py-5">
-    <div class="container text-center">
-      <h3 class="section-title">¿Por qué elegirnos?</h3>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="feature-card p-4">
-            <i class="bi bi-geo-alt-fill"></i>
-            <h5 class="fw-bold">Ubicación Estratégica</h5>
-            <p>Acceso directo por carretera y cerca de centros urbanos y naturales.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="feature-card p-4">
-            <i class="bi bi-houses-fill"></i>
-            <h5 class="fw-bold">Espacios Amplios</h5>
-            <p>Lotes desde 300 m² ideales para familias o proyectos inmobiliarios.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="feature-card p-4">
-            <i class="bi bi-cash-stack"></i>
-            <h5 class="fw-bold">Precios Competitivos</h5>
-            <p>Oportunidad única: paga desde S/ 10,000 al contado.</p>
-          </div>
-        </div>
+  <!-- DESCRIPCIÓN -->
+  <section class="descripcion container">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4">
+        <h2 class="section-title text-start">Sobre Las Villas de Carhuaz</h2>
+        <p>Ubicado en una zona de crecimiento, con accesos afirmados, rodeado de naturaleza y tranquilidad. Ideal para quienes buscan invertir o construir el hogar familiar.</p>
+        <ul>
+          <li>✅ Fácil acceso por carretera</li>
+          <li>✅ Zona segura y urbanizada</li>
+          <li>✅ Oportunidad de valorización</li>
+        </ul>
+        <a href="#contacto" class="btn btn-primary mt-3">Solicitar Información</a>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="xd 2.png" class="img-fluid" alt="Proyecto Las Villas de Carhuaz">
       </div>
     </div>
   </section>
 
   <!-- GALERÍA -->
-  <section id="galeria" class="container py-5">
-    <h3 class="section-title text-center">Galería del Proyecto</h3>
-    <div class="row g-3">
-      <div class="col-md-4"><img src="foto1.jpg" class="img-fluid rounded shadow-sm" alt=""></div>
-      <div class="col-md-4"><img src="foto2.jpg" class="img-fluid rounded shadow-sm" alt=""></div>
-      <div class="col-md-4"><img src="foto3.jpg" class="img-fluid rounded shadow-sm" alt=""></div>
+  <section id="galeria" class="container">
+    <h2 class="section-title">Galería del Proyecto</h2>
+    <div class="row g-3 galeria">
+      <div class="col-md-4"><img src="foto1.jpg" alt="Vista aérea"></div>
+      <div class="col-md-4"><img src="foto2.jpg" alt="Lotes"></div>
+      <div class="col-md-4"><img src="foto3.jpg" alt="Entorno natural"></div>
+    </div>
+  </section>
+
+  <!-- MAPA -->
+  <section class="container py-5">
+    <h2 class="section-title">Ubicación Estratégica</h2>
+    <div class="ratio ratio-16x9 shadow rounded">
+      <iframe
+        src="https://www.google.com/maps?q=-9.2837,-77.6424&hl=es;z=14&output=embed"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
     </div>
   </section>
 
   <!-- CONTACTO -->
-  <section id="contacto" class="py-5 bg-primary text-white text-center">
+  <section id="contacto" class="contacto py-5">
     <div class="container">
-      <h3 class="fw-bold mb-3">¡Contáctanos Hoy!</h3>
-      <p class="mb-2">Teléfono / WhatsApp: <strong>957 320 891</strong></p>
-      <p>Asesor disponible para brindarte toda la información del proyecto.</p>
-      <a href="https://wa.me/51957320891" class="btn btn-light btn-lg mt-3"><i class="bi bi-whatsapp me-2"></i>Escríbenos ahora</a>
+      <h2 class="fw-bold mb-3">¡Contáctanos Hoy!</h2>
+      <p>Asesor de ventas disponible para brindarte toda la información.</p>
+      <form onsubmit="redirigirWhatsApp(event)" class="mt-4 container" style="max-width:600px;">
+        <div class="mb-3">
+          <input type="text" id="nombre" class="form-control" placeholder="Tu nombre" required />
+        </div>
+        <div class="mb-3">
+          <input type="text" id="mensaje" class="form-control" placeholder="Escribe tu consulta" required />
+        </div>
+        <button type="submit" class="btn btn-lg"><i class="bi bi-whatsapp me-2"></i>Enviar por WhatsApp</button>
+      </form>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p class="mb-0">&copy; 2025 Las Villas de Carhuaz | Desarrollado por <a href="#">Tu Inmobiliaria</a></p>
+    <p class="mb-0">&copy; 2025 Las Villas de Carhuaz | Con el respaldo de ELIKIM S.A.C.</p>
   </footer>
+
+  <script>
+    function redirigirWhatsApp(e) {
+      e.preventDefault();
+      const nombre = document.getElementById("nombre").value;
+      const mensaje = document.getElementById("mensaje").value;
+      const texto = encodeURIComponent(`Hola, soy ${nombre}. ${mensaje}`);
+      window.open(`https://wa.me/51957320891?text=${texto}`, "_blank");
+    }
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

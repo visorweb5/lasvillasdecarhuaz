@@ -152,6 +152,14 @@
     .hero-slide img{ height:100vh; object-fit:cover; filter:brightness(.75); }
     .hero .carousel-caption{ top:0; bottom:0; }
 
+    /* Indicadores del hero más visibles */
+    #heroCarousel .carousel-indicators [data-bs-target]{ width:12px; height:12px; border-radius:50%; background-color:rgba(255,255,255,.7); }
+    #heroCarousel .carousel-indicators .active{ background-color: var(--dorado); }
+
+    /* Sello flotante Navidad 2025 */
+    .promo-stamp{ position:absolute; top:-18px; right:12px; z-index:2; background:linear-gradient(135deg,#b91c1c,#dc2626,#f59e0b); color:#fff; font-weight:800; padding:.5rem 1rem; border-radius:999px; transform: rotate(-8deg); box-shadow:0 10px 24px rgba(220,38,38,.25); letter-spacing:.5px; }
+    @media (max-width: 768px){ .promo-stamp{ top:-12px; right:8px; transform: rotate(-6deg) scale(.9); } }
+
 </style>
 </head>
 
@@ -191,6 +199,11 @@
   <header class="hero p-0">
     <div class="snow" aria-hidden="true" id="snow"></div>
     <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3500">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
       <div class="carousel-inner">
         <div class="carousel-item active hero-slide">
           <img src="hero1.jpg" class="d-block w-100" alt="Las Villas de Carhuaz - slide 1">
@@ -314,7 +327,8 @@
   </section>
 
   <!-- PROMOCIONES - NUEVA SECCIÓN -->
-  <section id="promociones" class="py-5" style="background:linear-gradient(180deg,#fff,#f8fafc)">
+  <section id="promociones" class="py-5 position-relative" style="background:linear-gradient(180deg,#fff,#f8fafc)">
+    <div class="promo-stamp" aria-hidden="true">🎄 Navidad 2025</div>
     <div class="container">
       <div class="text-center mb-4">
         <h2 class="section-title mb-2">Promociones de Temporada</h2>

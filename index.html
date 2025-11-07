@@ -11,81 +11,155 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* Paleta inspirada en el logo */
     :root{
-      --azul:#1e3a8a; --celeste:#0ea5e9; --dorado:#facc15;
-      --rojo:#b91c1c; --verde:#065f46; --gris-claro:#f9fafb;
+      --pizarra:#2f3b45;        /* texto principal / nav */
+      --oliva:#6b8f3f;          /* acento 1 (casa verde) */
+      --teal:#2a8c82;           /* acento 2 (casa turquesa) */
+      --terracota:#e07a4a;      /* acento 3 (casa naranja) */
+      --dorado:#caa125;         /* acento navideño */
+      --gris-claro:#f6f8fb;     /* fondos suaves */
+      --gris-borde:#e8edf3;
+      --negro:#0f1720;
+      --blanco:#ffffff;
     }
+
     *{box-sizing:border-box}
-    body{font-family:'Poppins',sans-serif;background:var(--gris-claro);color:#111;overflow-x:hidden}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:var(--gris-claro);
+      color:var(--pizarra);
+      overflow-x:hidden
+    }
+
+    /* Helpers de marca */
+    .text-brand{color:var(--oliva)!important}
+    .bg-brand{background:linear-gradient(90deg,var(--oliva),var(--teal))}
+    .btn-brand{
+      border:none; border-radius:999px; font-weight:700;
+      padding:.8rem 1.4rem; color:#fff; 
+      background:linear-gradient(90deg,var(--oliva),var(--teal));
+      box-shadow:0 10px 24px rgba(42,140,130,.18)
+    }
+    .btn-brand:hover{filter:brightness(.95)}
+    .btn-ghost{
+      border:2px solid #fff; color:#fff; border-radius:999px; font-weight:700; padding:.7rem 1.2rem;
+      backdrop-filter:saturate(1.1) blur(1px)
+    }
+    .pill{border-radius:999px; padding:.45rem .9rem; font-weight:700}
 
     /* NAVBAR */
-    .navbar{background:rgba(255,255,255,.98);box-shadow:0 2px 6px rgba(0,0,0,.1)}
-    .navbar-brand img{height:60px}
-    .nav-link{font-weight:600;color:#111 !important;margin-left:1rem}
-    .nav-link:hover{color:var(--celeste) !important}
+    .navbar{
+      background:rgba(255,255,255,.97);
+      box-shadow:0 10px 20px rgba(15,23,32,.06);
+      border-bottom:1px solid var(--gris-borde)
+    }
+    .navbar-brand img{height:56px}
+    .nav-link{font-weight:600;color:var(--pizarra)!important;margin-left:1rem}
+    .nav-link:hover{color:var(--teal)!important}
+    .nav-link.text-danger{color:var(--terracota)!important}
 
     /* HERO SLIDER */
-    .hero{height:100vh;background:none}
-    .hero-slide img{height:100vh;width:100%;object-fit:cover;filter:brightness(.78)}
-    #heroCarousel .carousel-item.active img{animation:kenburns 7s ease-in-out forwards}
-    @keyframes kenburns{from{transform:scale(1)} to{transform:scale(1.1)}}
-    .hero .carousel-caption{top:0;bottom:0}
+    .hero{height:100vh;position:relative}
+    .hero .overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(180deg,rgba(15,23,32,.25),rgba(15,23,32,.55));
+      z-index:2
+    }
+    /* sin zoom: solo fade entre slides */
+    .hero-slide img{height:100vh;width:100%;object-fit:cover;filter:contrast(1.02) saturate(1.02)}
+    #heroCarousel .carousel-item{transition:opacity .9s ease}
+    #heroCarousel .carousel-item, #heroCarousel .active.carousel-item-start, #heroCarousel .active.carousel-item-end{
+      opacity:0
+    }
+    #heroCarousel .active, #heroCarousel .carousel-item-next.carousel-item-start, #heroCarousel .carousel-item-prev.carousel-item-end{
+      opacity:1
+    }
+    .hero .carousel-caption{
+      top:0;bottom:0;z-index:3;
+      display:flex;align-items:center;justify-content:center;flex-direction:column
+    }
+    .hero h1{text-shadow:0 8px 24px rgba(0,0,0,.35)}
     #heroCarousel .carousel-indicators [data-bs-target]{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.6)}
     #heroCarousel .carousel-indicators .active{background:var(--dorado)}
+
+    /* Nieve sutil navideña */
+    .snow{position:absolute;inset:0;pointer-events:none;z-index:3;overflow:hidden}
+    .snow i{
+      position:absolute;top:-10px;width:6px;height:6px;background:#fff;border-radius:50%;
+      opacity:.8;animation:fall linear infinite
+    }
+    @keyframes fall{to{transform:translateY(110vh)}}
     .pulse{animation:pulse 1.6s ease-in-out infinite}
     @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
-    
+
     /* SECCIONES */
     section{padding:5rem 0}
-    .section-title{color:var(--azul);font-weight:700;margin-bottom:1rem;text-align:center}
+    .section-title{color:var(--oliva);font-weight:800;margin-bottom:1rem;text-align:center}
 
-    /* INFO CARDS (Proyecto) */
-    .info-card{background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,.05);padding:2rem 1rem;text-align:center;transition:.3s}
-    .info-card:hover{transform:translateY(-6px);box-shadow:0 6px 16px rgba(0,0,0,.1)}
-    .info-card i{font-size:2rem;color:var(--azul);margin-bottom:.5rem}
+    /* INFO CARDS */
+    .info-card{
+      background:#fff;border-radius:16px;box-shadow:0 10px 24px rgba(15,23,32,.06);
+      padding:2rem 1rem;text-align:center;transition:.3s;border:1px solid var(--gris-borde)
+    }
+    .info-card:hover{transform:translateY(-6px);box-shadow:0 16px 42px rgba(15,23,32,.10)}
+    .info-card i{font-size:2rem;color:var(--teal);margin-bottom:.5rem}
 
     /* LOTES */
     .mapa-3d-wrapper{perspective:1000px;display:inline-block}
-    .mapa-3d{transition:transform .6s ease,box-shadow .6s ease;border-radius:16px}
-    .mapa-3d:hover{transform:rotateY(8deg) rotateX(6deg) scale(1.03);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+    .mapa-3d{
+      transition:transform .6s ease,box-shadow .6s ease;border-radius:16px;border:1px solid var(--gris-borde);
+      background:#fff
+    }
+    .mapa-3d:hover{transform:rotateY(6deg) rotateX(5deg) scale(1.02);box-shadow:0 24px 50px rgba(15,23,32,.25)}
 
     /* BENEFICIOS */
-    .feature-card{background:#fff;border-radius:16px;box-shadow:0 3px 10px rgba(0,0,0,.05);padding:2rem 1rem;text-align:center;transition:.3s}
-    .feature-card i{font-size:2.2rem;color:var(--azul);margin-bottom:.7rem}
-    .feature-card:hover{transform:translateY(-6px);background:var(--celeste);color:#fff}
+    .feature-card{
+      background:#fff;border-radius:16px;border:1px solid var(--gris-borde);
+      box-shadow:0 10px 24px rgba(15,23,32,.06);padding:2rem 1rem;text-align:center;transition:.3s
+    }
+    .feature-card i{font-size:2.2rem;color:var(--oliva);margin-bottom:.7rem}
+    .feature-card:hover{transform:translateY(-6px);background:linear-gradient(90deg,var(--oliva),var(--teal));color:#fff}
     .feature-card:hover i{color:#fff}
 
     /* PROMOCIONES */
-    #promociones{position:relative;background:linear-gradient(180deg,#fff,#f8fafc)}
+    #promociones{position:relative;background:linear-gradient(180deg,#fff,#f3f6fb)}
     .promo-stamp{
-      position:absolute;top:-22px;left:50%;transform:translateX(-50%) rotate(-6deg);
-      background:linear-gradient(135deg,#b91c1c,#dc2626,#f59e0b);color:#fff;font-weight:800;
-      padding:.5rem 1rem;border-radius:999px;box-shadow:0 10px 24px rgba(220,38,38,.25);letter-spacing:.5px;z-index:2
+      position:absolute;top:-22px;left:50%;transform:translateX(-50%) rotate(-4deg);
+      background:linear-gradient(135deg,var(--terracota),var(--dorado));color:#fff;font-weight:800;
+      padding:.5rem 1rem;border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.15);letter-spacing:.5px;z-index:2
     }
-    .filter-pill{border-radius:999px;font-weight:700;padding:.5rem 1rem;box-shadow:0 2px 6px rgba(0,0,0,.06)}
-    .filter-pill.active{background:linear-gradient(90deg,#b91c1c,#065f46);color:#fff;border-color:transparent}
+    .filter-pill{border-radius:999px;font-weight:700;padding:.5rem 1rem;border:1px solid var(--gris-borde);background:#fff}
+    .filter-pill.active{background:linear-gradient(90deg,var(--oliva),var(--teal));color:#fff;border-color:transparent}
 
-    .promo-card{overflow:hidden;border:0;border-radius:18px;background:#fff;
-      box-shadow:0 14px 32px rgba(2,6,23,.08);transition:transform .25s ease,box-shadow .25s ease}
+    .promo-card{
+      overflow:hidden;border:1px solid var(--gris-borde);border-radius:18px;background:#fff;
+      box-shadow:0 14px 32px rgba(2,6,23,.08);transition:transform .25s ease,box-shadow .25s ease
+    }
     .promo-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(2,6,23,.12)}
-    .promo-thumb{position:relative;aspect-ratio:16/9;overflow:hidden}
+    .promo-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#000}
     .promo-thumb img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);
       transition:transform .5s ease,filter .5s ease;filter:saturate(1.02) contrast(1.02)}
-    .promo-card:hover .promo-thumb img{transform:scale(1.08);filter:saturate(1.08) contrast(1.05)}
+    .promo-card:hover .promo-thumb img{transform:scale(1.06);filter:saturate(1.06) contrast(1.05)}
     .promo-chip{position:absolute;top:12px;left:12px;padding:.3rem .7rem;border-radius:999px;
       font-size:.8rem;font-weight:800;color:#fff;box-shadow:0 6px 18px rgba(0,0,0,.18)}
-    .chip-navidad{background:linear-gradient(45deg,#b91c1c,#16a34a)}
-    .chip-verano{background:linear-gradient(45deg,#0284c7,#22c55e)}
+    .chip-navidad{background:linear-gradient(45deg,var(--terracota),var(--oliva))}
+    .chip-verano{background:linear-gradient(45deg,var(--teal),#2fae6f)}
     .chip-otros{background:linear-gradient(45deg,#6b7280,#111827)}
-    .badge-nuevo{position:absolute;top:12px;right:12px;background:#22c55e;color:#fff;font-size:.7rem;font-weight:700;border-radius:6px;padding:.25rem .5rem}
-    .badge-ultimos{position:absolute;top:12px;right:12px;background:#b91c1c;color:#fff;font-size:.7rem;font-weight:700;border-radius:6px;padding:.25rem .5rem}
+    .badge-nuevo,.badge-ultimos{
+      position:absolute;top:12px;right:12px;background:var(--dorado);color:#111;font-size:.7rem;
+      font-weight:800;border-radius:6px;padding:.25rem .5rem
+    }
+    .badge-ultimos{background:var(--terracota);color:#fff}
+
     .btn-icon{border-radius:12px;padding:.45rem .6rem;display:inline-flex;align-items:center;gap:.35rem;font-weight:700}
     .btn-icon i{font-size:1rem}
 
     /* GALERÍA */
-    #slider img{border-radius:16px;height:500px;object-fit:cover}
+    #slider img{border-radius:16px;height:500px;object-fit:cover;border:1px solid var(--gris-borde)}
 
     /* CONTACTO/FOOTER */
+    #contacto{background:linear-gradient(120deg,var(--pizarra),#22303a);color:#fff}
     footer{background:#0f172a;color:#cbd5e1;text-align:center;padding:2rem 0;font-size:.9rem}
   </style>
 </head>
@@ -100,7 +174,7 @@
     <div id="navbarNav" class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav">
         <li class="nav-item"><a href="#proyecto" class="nav-link">Proyecto</a></li>
-        <li class="nav-item"><a href="#promociones" class="nav-link fw-semibold text-danger"><i class="bi bi-gift me-1"></i>Promociones</a></li>
+        <li class="nav-item"><a href="#promociones" class="nav-link fw-semibold" style="color:var(--terracota)!important;"><i class="bi bi-gift me-1"></i>Promociones</a></li>
         <li class="nav-item"><a href="#beneficios" class="nav-link">Beneficios</a></li>
         <li class="nav-item"><a href="#slider" class="nav-link">Galería</a></li>
         <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
@@ -111,62 +185,86 @@
 
 <!-- HERO SLIDER -->
 <header class="hero">
-  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4500">
+  <div class="overlay"></div>
+  <div class="snow" aria-hidden="true"></div>
+  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4800">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
       <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
       <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
-
     </div>
+
     <div class="carousel-inner">
       <div class="carousel-item active hero-slide">
         <img src="navidad.jpg" class="d-block w-100" alt="Slide 1">
-        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center text-center">
-          <h1 class="fw-bold mb-3">Tu mejor regalo: <span style="color:var(--dorado)">tu terreno propio</span></h1>
-          <p class="lead">Hasta 6 meses sin intereses • Promos navideñas disponibles</p>
-          <a href="#promociones" class="btn btn-warning btn-lg fw-bold pulse"><i class="bi bi-gift me-2"></i>Ver Promociones</a>
+        <div class="carousel-caption text-center">
+          <h1 class="fw-bold mb-3 text-white">Tu mejor regalo: <span style="color:var(--dorado)">tu terreno propio</span></h1>
+          <p class="lead text-white-50">Hasta 6 meses sin intereses • Promos navideñas disponibles</p>
+          <a href="#promociones" class="btn btn-brand btn-lg pulse"><i class="bi bi-gift me-2"></i>Ver Promociones</a>
         </div>
       </div>
+
       <div class="carousel-item hero-slide">
         <img src="navidad2.jpg" class="d-block w-100" alt="Slide 2">
-        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center text-center">
-          <h1 class="fw-bold mb-3">A solo 15 min de Ica</h1>
-          <p class="lead">Ubicación estratégica para vivir o invertir</p>
-          <a href="#contacto" class="btn btn-outline-light btn-lg"><i class="bi bi-whatsapp me-2"></i>Hablar con un asesor</a>
+        <div class="carousel-caption text-center">
+          <h1 class="fw-bold mb-3 text-white">A solo 15 min de Ica</h1>
+          <p class="lead text-white-50">Ubicación estratégica para vivir o invertir</p>
+          <a href="#contacto" class="btn btn-ghost btn-lg"><i class="bi bi-whatsapp me-2"></i>Hablar con un asesor</a>
         </div>
       </div>
-     <div class="carousel-item hero-slide">
+
+      <div class="carousel-item hero-slide">
         <img src="navidad3_.png" class="d-block w-100" alt="Slide 3">
-        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center text-center">
-          <h1 class="fw-bold mb-3">Invierte en tu Futuro</h1>
-          <a href="#contacto" class="btn btn-outline-light btn-lg"><i class="bi bi-whatsapp me-2"></i>Hablar con un asesor</a>
+        <div class="carousel-caption text-center">
+          <h1 class="fw-bold mb-3 text-white">Invierte en tu Futuro</h1>
+          <a href="#contacto" class="btn btn-ghost btn-lg"><i class="bi bi-whatsapp me-2"></i>Hablar con un asesor</a>
         </div>
       </div>
-      
     </div>
   </div>
 </header>
-
 
 <!-- PROYECTO -->
 <section id="proyecto" class="container">
   <h2 class="section-title">Datos del Proyecto</h2>
   <div class="row g-4">
-    <div class="col-md-3 col-6"><div class="info-card"><i class="bi bi-cash-stack"></i><h5 class="mt-2">Desde S/ 10,000</h5><p class="mb-0">Pago único al contado</p></div></div>
-    <div class="col-md-3 col-6"><div class="info-card"><i class="bi bi-aspect-ratio"></i><h5 class="mt-2">Lotes desde 300 m²</h5><p class="mb-0">Amplios y urbanizados</p></div></div>
-    <div class="col-md-3 col-6"><div class="info-card"><i class="bi bi-geo-alt"></i><h5 class="mt-2">Km 23.5 Carhuaz</h5><p class="mb-0">A 15 min de Ica</p></div></div>
-    <div class="col-md-3 col-6"><div class="info-card"><i class="bi bi-lightning-charge"></i><h5 class="mt-2">Servicios proyectados</h5><p class="mb-0">Agua y energía</p></div></div>
+    <div class="col-md-3 col-6">
+      <div class="info-card">
+        <i class="bi bi-cash-stack"></i>
+        <h5 class="mt-2">Desde S/ 10,000</h5>
+        <p class="mb-0">Pago único al contado</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="info-card">
+        <i class="bi bi-aspect-ratio"></i>
+        <h5 class="mt-2">Lotes desde 300 m²</h5>
+        <p class="mb-0">Amplios y urbanizados</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="info-card">
+        <i class="bi bi-geo-alt"></i>
+        <h5 class="mt-2">Km 23.5 Carhuaz</h5>
+        <p class="mb-0">A 15 min de Ica</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="info-card">
+        <i class="bi bi-lightning-charge"></i>
+        <h5 class="mt-2">Servicios proyectados</h5>
+        <p class="mb-0">Agua y energía</p>
+      </div>
+    </div>
   </div>
 </section>
 
-
-
-<!-- === PROMOCIONES (ARRIBA respecto a Galería) === -->
+<!-- === PROMOCIONES (arriba de Galería) === -->
 <section id="promociones" class="py-5">
   <div class="promo-stamp">🎁 Navidad 2025</div>
   <div class="container">
     <div class="text-center mb-4">
-      <h2 class="section-title text-primary">Promociones de Temporada</h2>
+      <h2 class="section-title text-brand">Promociones de Temporada</h2>
       <p class="text-muted">Descubre nuestras campañas <strong>Navidad</strong>, <strong>Verano</strong> y <strong>Otras</strong>.</p>
     </div>
 
@@ -179,10 +277,10 @@
 
     <!-- filtros -->
     <div class="d-flex justify-content-center gap-2 mb-4">
-      <button class="btn btn-outline-dark filter-pill active" data-filter="all"><i class="bi bi-grid me-1"></i>Todo</button>
-      <button class="btn btn-outline-danger filter-pill" data-filter="navidad"><i class="bi bi-tree me-1"></i>Navidad</button>
-      <button class="btn btn-outline-primary filter-pill" data-filter="verano"><i class="bi bi-sun me-1"></i>Verano</button>
-      <button class="btn btn-outline-secondary filter-pill" data-filter="otros"><i class="bi bi-tags me-1"></i>Otros</button>
+      <button class="btn filter-pill active" data-filter="all"><i class="bi bi-grid me-1"></i>Todo</button>
+      <button class="btn filter-pill" data-filter="navidad"><i class="bi bi-tree me-1"></i>Navidad</button>
+      <button class="btn filter-pill" data-filter="verano"><i class="bi bi-sun me-1"></i>Verano</button>
+      <button class="btn filter-pill" data-filter="otros"><i class="bi bi-tags me-1"></i>Otros</button>
     </div>
 
     <div id="promoEmpty" class="text-center text-muted d-none mb-4">No hay promociones para este filtro. 🎅</div>
@@ -198,7 +296,7 @@
             <span class="badge-ultimos">Últimos días</span>
           </div>
           <div class="p-3 d-flex flex-column gap-2">
-            <h6 class="fw-bold mb-1">PRIMERA ETAPA- Navidad Sin Intereses 6 meses</h6>
+            <h6 class="fw-bold mb-1">PRIMERA ETAPA - Navidad Sin Intereses 6 meses</h6>
             <small class="text-muted">Válido hasta el 31/12</small>
             <div class="d-flex gap-2 mt-auto">
               <button class="btn btn-outline-success btn-icon" data-bs-toggle="modal" data-bs-target="#lightbox" data-img="navidadsininteres_e2.jpg" data-title="Sin Intereses 6 meses"><i class="bi bi-arrows-fullscreen"></i>Ver</button>
@@ -225,22 +323,17 @@
         </article>
       </div>
 
-      <!-- Verano -->
-      
-
-      <!-- Otros (ejemplo) -->
-     
+      <!-- Espacios para más promos... -->
     </div>
 
     <div class="text-center mt-5">
-      <a href="#contacto" class="btn btn-danger btn-lg fw-bold pulse" data-confetti><i class="bi bi-gift me-2"></i>Quiero aprovechar las promos</a>
+      <a href="#contacto" class="btn btn-brand btn-lg fw-bold pulse" data-confetti><i class="bi bi-gift me-2"></i>Quiero aprovechar las promos</a>
     </div>
   </div>
 </section>
 
-
 <!-- LOTES -->
-<section id="lotes" class="py-5" style="background: linear-gradient(135deg, #f9fafb, #eef2ff); overflow:hidden;">
+<section id="lotes" class="py-5" style="background: linear-gradient(135deg, #f9fafb, #eef4ff); overflow:hidden;">
   <div class="container">
     <h2 class="section-title mb-5">Elige Tu Lote Ideal</h2>
     <div class="row align-items-center g-5">
@@ -250,21 +343,21 @@
         </div>
       </div>
       <div class="col-md-6">
-        <h3 class="fw-bold" style="color: var(--azul);">¿Te interesa nuestro proyecto?</h3>
+        <h3 class="fw-bold" style="color: var(--pizarra);">¿Te interesa nuestro proyecto?</h3>
         <p class="mt-3">Explora la distribución de nuestros <strong>lotes desde 300 m²</strong>. Vive rodeado de naturaleza, cerca de la ciudad.</p>
         <ul class="list-unstyled mt-3 mb-4">
           <li>✅ Lotes disponibles en zona urbanizada</li>
           <li>✅ Accesos afirmados y vías internas</li>
           <li>✅ Entorno tranquilo con valorización</li>
         </ul>
-        <a href="#contacto" class="btn btn-lg px-4 fw-bold" style="background: linear-gradient(90deg, var(--celeste), var(--azul)); color: white; border-radius: 50px;">
+        <a href="#contacto" class="btn btn-brand btn-lg px-4 fw-bold">
           <i class="bi bi-whatsapp me-2"></i> Solicita Información
         </a>
       </div>
     </div>
   </div>
 </section>
-  
+
 <!-- BENEFICIOS -->
 <section id="beneficios" class="bg-light">
   <div class="container text-center">
@@ -278,9 +371,9 @@
   </div>
 </section>
 
-<!-- === GALERÍA (ABAJO) === -->
+<!-- GALERÍA -->
 <section id="slider" class="container py-5">
-  <h2 class="section-title text-primary">Galería del Proyecto</h2>
+  <h2 class="section-title text-brand">Galería del Proyecto</h2>
   <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3500">
     <div class="carousel-inner rounded">
       <div class="carousel-item active"><img src="foto1.jpg" class="d-block w-100" alt="Galería 1"></div>
@@ -291,14 +384,14 @@
 </section>
 
 <!-- CONTACTO -->
-<section id="contacto" class="py-5" style="background:#1e3a8a;color:#fff">
+<section id="contacto" class="py-5">
   <div class="container text-center">
     <h2 class="fw-bold mb-3">¡Contáctanos Hoy!</h2>
-    <p>Asesor de ventas disponible para brindarte toda la información.</p>
+    <p class="text-white-50">Asesor de ventas disponible para brindarte toda la información.</p>
     <form onsubmit="redirigirWhatsApp(event)" class="mt-4 mx-auto" style="max-width:600px;">
-      <div class="mb-3"><input type="text" id="nombre" class="form-control" placeholder="Tu nombre" required /></div>
-      <div class="mb-3"><input type="text" id="mensaje" class="form-control" placeholder="Escribe tu consulta" required /></div>
-      <button type="submit" class="btn btn-lg btn-warning fw-bold"><i class="bi bi-whatsapp me-2"></i>Enviar por WhatsApp</button>
+      <div class="mb-3"><input type="text" id="nombre" class="form-control form-control-lg" placeholder="Tu nombre" required /></div>
+      <div class="mb-3"><input type="text" id="mensaje" class="form-control form-control-lg" placeholder="Escribe tu consulta" required /></div>
+      <button type="submit" class="btn btn-brand btn-lg"><i class="bi bi-whatsapp me-2"></i>Enviar por WhatsApp</button>
     </form>
   </div>
 </section>
@@ -334,12 +427,12 @@
     if(!btn) return;
     btn.addEventListener('click',()=>{
       const burst=document.createElement('div');
-      burst.style.position='fixed';burst.style.inset='0';burst.style.pointerEvents='none';
+      burst.style.position='fixed';burst.style.inset='0';burst.style.pointerEvents='none';burst.style.zIndex='9999';
       for(let i=0;i<80;i++){
         const p=document.createElement('i');
         p.style.position='absolute';p.style.left=(Math.random()*100)+'vw';p.style.top='50vh';
         p.style.width='8px';p.style.height='8px';
-        p.style.background=['#f87171','#fde047','#34d399','#60a5fa'][i%4];
+        p.style.background=['#e07a4a','#caa125','#6b8f3f','#2a8c82'][i%4];
         p.style.transform=`translateY(0) rotate(${Math.random()*360}deg)`;
         p.style.animation=`conf ${800+Math.random()*800}ms ease-out forwards`;
         burst.appendChild(p);
@@ -365,12 +458,9 @@
         visible+=show?1:0;
       });
       if(empty){ empty.classList.toggle('d-none',visible!==0); }
+      buttons.forEach(b=>b.classList.toggle('active', b.getAttribute('data-filter')===filter));
     }
-    buttons.forEach(btn=>btn.addEventListener('click',()=>{
-      buttons.forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      apply(btn.getAttribute('data-filter'));
-    }));
+    buttons.forEach(btn=>btn.addEventListener('click',()=>apply(btn.getAttribute('data-filter'))));
     apply('all');
   })();
 
@@ -383,6 +473,22 @@
     const img=document.getElementById('lightboxImg');
     img.src=imgSrc; img.alt=title;
   });
+
+  // Nieve dinámica (cantidad moderada)
+  (function(){
+    const snow=document.querySelector('.snow');
+    if(!snow) return;
+    const flakes=50;
+    for(let i=0;i<flakes;i++){
+      const f=document.createElement('i');
+      f.style.left=(Math.random()*100)+'%';
+      f.style.animationDuration=(6+Math.random()*6)+'s';
+      f.style.animationDelay=(Math.random()*4)+'s';
+      f.style.opacity=(.6+Math.random()*.4).toFixed(2);
+      f.style.width=f.style.height=(4+Math.random()*4)+'px';
+      snow.appendChild(f);
+    }
+  })();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -147,6 +147,11 @@
     .nav-link[href="#promociones"]::after{ content:"7a2"; font-family:"bootstrap-icons"; margin-left:.4rem; display:inline-block; animation: ring 1.8s ease-in-out infinite; transform-origin: top center; }
     @keyframes ring{ 0%{ transform: rotate(0) } 10%{ transform: rotate(18deg) } 20%{ transform: rotate(-16deg)} 30%{ transform: rotate(12deg)} 40%{ transform: rotate(-8deg)} 50%{ transform: rotate(4deg)} 60%,100%{ transform: rotate(0)} }
 
+    /* Hero carousel full height */
+    .hero{ height:100vh; background:none; }
+    .hero-slide img{ height:100vh; object-fit:cover; filter:brightness(.75); }
+    .hero .carousel-caption{ top:0; bottom:0; }
+
 </style>
 </head>
 
@@ -183,11 +188,44 @@
   </nav>
 
   <!-- HERO -->
-  <header class="hero">
+  <header class="hero p-0">
     <div class="snow" aria-hidden="true" id="snow"></div>
-    <h1>Encuentra tu lugar ideal<br>en <span style="color: var(--dorado)">Las Villas de Carhuaz</span></h1>
-    <p>El lugar perfecto para construir la casa de tus sueños o invertir en tu futuro.</p>
-    <a href="#promociones" class="btn btn-lg pulse"><i class="bi bi-gift me-2"></i>Ver Promociones</a>
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3500">
+      <div class="carousel-inner">
+        <div class="carousel-item active hero-slide">
+          <img src="hero1.jpg" class="d-block w-100" alt="Las Villas de Carhuaz - slide 1">
+          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+            <h1 class="fw-bold mb-3">Tu mejor regalo: <span style="color: var(--dorado)">tu terreno propio</span></h1>
+            <p class="lead">Hasta 6 meses sin intereses • Promos navideñas disponibles</p>
+            <a href="#promociones" class="btn btn-lg pulse mt-2"><i class="bi bi-gift me-2"></i>Ver Promociones</a>
+          </div>
+        </div>
+        <div class="carousel-item hero-slide">
+          <img src="hero2.jpg" class="d-block w-100" alt="Las Villas de Carhuaz - slide 2">
+          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+            <h1 class="fw-bold mb-3">Lotes desde <span style="color: var(--dorado)">300 m²</span></h1>
+            <p class="lead">Zona segura • Accesos afirmados • Entorno natural</p>
+            <a href="#lotes" class="btn btn-lg mt-2">Ver distribución</a>
+          </div>
+        </div>
+        <div class="carousel-item hero-slide">
+          <img src="hero3.jpg" class="d-block w-100" alt="Las Villas de Carhuaz - slide 3">
+          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+            <h1 class="fw-bold mb-3">A solo 15 min de Ica</h1>
+            <p class="lead">Ubicación estratégica para vivir o invertir</p>
+            <a href="#contacto" class="btn btn-lg mt-2"><i class="bi bi-whatsapp me-2"></i>Hablar con un asesor</a>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
   </header>
 
   <!-- INFO DEL PROYECTO -->
@@ -204,6 +242,8 @@
   <!-- SLIDER -->
     <!-- PROMOCIONES - SECCIÓN MOVIDA ARRIBA -->
     <!-- GALERÍA - SECCIÓN MOVIDA ABAJO -->
+    <!-- PROMOCIONES - ARRIBA -->
+    <!-- GALERÍA - ABAJO -->
   <section id="slider" class="container">
     <h2 class="section-title">Galería del Proyecto</h2>
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3500">
@@ -212,6 +252,14 @@
         <div class="carousel-item"><img src="foto2.jpg" class="d-block w-100" alt="Vista 2 (1600x900px)"></div>
         <div class="carousel-item"><img src="foto3.jpg" class="d-block w-100" alt="Vista 3 (1600x900px)"></div>
       </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
     </div>
   </section>
 

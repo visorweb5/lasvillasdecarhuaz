@@ -109,13 +109,52 @@
   </div>
 </nav>
 
-<!-- HERO SLIDER -->
+<!-- HERO SLIDER SIN ZOOM -->
 <header class="hero">
-  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4500">
+  <style>
+    .hero {
+      height: 100vh;
+      overflow: hidden;
+    }
+    .hero-slide img {
+      height: 100vh;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: opacity 1.2s ease-in-out;
+    }
+    #heroCarousel .carousel-item {
+      transition: opacity 1.5s ease-in-out;
+    }
+    #heroCarousel .carousel-item-next,
+    #heroCarousel .carousel-item-prev,
+    #heroCarousel .carousel-item.active {
+      display: block;
+    }
+    #heroCarousel .carousel-fade .carousel-item {
+      opacity: 0;
+      transition-property: opacity;
+    }
+    #heroCarousel .carousel-fade .carousel-item.active,
+    #heroCarousel .carousel-fade .carousel-item-next.carousel-item-start,
+    #heroCarousel .carousel-fade .carousel-item-prev.carousel-item-end {
+      opacity: 1;
+      z-index: 1;
+    }
+    .hero .carousel-caption {
+      top: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(3px);
+    }
+  </style>
+
+  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4500" data-bs-pause="hover">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
       <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
     </div>
+
     <div class="carousel-inner">
       <div class="carousel-item active hero-slide">
         <img src="navidad.jpg" class="d-block w-100" alt="Slide 1">
@@ -125,15 +164,17 @@
           <a href="#promociones" class="btn btn-warning btn-lg fw-bold pulse"><i class="bi bi-gift me-2"></i>Ver Promociones</a>
         </div>
       </div>
+
       <div class="carousel-item hero-slide">
         <img src="navidad2.jpg" class="d-block w-100" alt="Slide 2">
         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center text-center">
-          <h1 class="fw-bold mb-3">Lotes desde <span style="color:var(--dorado)">300 m²</span></h1>
+          <h1 class="fw-bold mb-3">Lotes desde <span style="color: var(--dorado)">300 m²</span></h1>
           <p class="lead">Zona segura • Accesos afirmados • Entorno natural</p>
           <a href="#lotes" class="btn btn-outline-light btn-lg">Ver distribución</a>
         </div>
       </div>
-     
+
+
     </div>
   </div>
 </header>

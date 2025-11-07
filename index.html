@@ -3,546 +3,415 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Las Villas de Carhuaz - Proyecto Inmobiliario</title>
+  <title>Las Villas de Carhuaz - Campaña Navideña</title>
 
-  <!-- Bootstrap y librerías -->
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --azul: #1e3a8a;
-      --celeste: #0ea5e9;
-      --dorado: #facc15;
-      --gris-claro: #f9fafb;
-      --rojo-navidad:#b91c1c;
-      --verde-navidad:#065f46;
+    :root{
+      --azul:#1e3a8a; --celeste:#0ea5e9; --dorado:#facc15;
+      --rojo:#b91c1c; --verde:#065f46; --gris-claro:#f9fafb;
     }
-
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--gris-claro);
-      color: #111;
-      overflow-x: hidden;
-    }
-
-    /* CINTA NAVIDEÑA SUPERIOR */
-    .xmas-ribbon{
-      background: linear-gradient(90deg, var(--rojo-navidad), #e11d48, var(--dorado));
-      color:#fff; font-weight:600; letter-spacing:.2px;
-    }
-    .xmas-ribbon .timer{ font-weight:700; }
+    *{box-sizing:border-box}
+    body{font-family:'Poppins',sans-serif;background:var(--gris-claro);color:#111;overflow-x:hidden}
 
     /* NAVBAR */
-    .navbar { background: rgba(255,255,255,0.98); box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-    .navbar-brand img { height: 60px; }
-    .nav-link { color: #111 !important; font-weight: 600; margin-left: 1rem; transition: color 0.3s ease; }
-    .nav-link:hover { color: var(--celeste) !important; }
+    .navbar{background:rgba(255,255,255,.98);box-shadow:0 2px 6px rgba(0,0,0,.1)}
+    .navbar-brand img{height:60px}
+    .nav-link{font-weight:600;color:#111 !important;margin-left:1rem}
+    .nav-link:hover{color:var(--celeste) !important}
 
-    /* HERO PARALLAX */
-    .hero {
-      position: relative;
-      height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('navidad.jpg') center/cover fixed no-repeat;
-      color: white; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center;
-    }
-    .hero h1 { font-size: 3.2rem; font-weight: 700; animation: fadeInDown 1.5s ease; }
-    .hero p { font-size: 1.3rem; animation: fadeInUp 1.8s ease; }
-    .hero .btn { margin-top: 2rem; background-color: var(--dorado); border: none; font-weight: 600; border-radius: 50px; padding: 0.9rem 2rem; color: #111; animation: fadeIn 2s ease; }
-    .hero .btn:hover { background-color: white; color: var(--azul); }
-
-    /* Copos de nieve sutiles */
-    .snow{ pointer-events:none; position:absolute; inset:0; overflow:hidden; }
-    .snow i{ position:absolute; top:-10px; width:8px; height:8px; background:#fff; border-radius:50%; opacity:.8; filter:drop-shadow(0 0 6px rgba(255,255,255,.7)); animation: fall linear infinite; }
-    @keyframes fall{ to { transform: translateY(110vh); } }
-
-    /* Animaciones */
-    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-    /* SECCIONES */
-    section { padding: 5rem 0; }
-    .section-title { color: var(--azul); font-weight: 700; margin-bottom: 2.5rem; text-align: center; }
-
-    /* INFO CARDS */
-    .info-card { background: white; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); padding: 2rem 1rem; text-align: center; transition: all 0.4s ease; }
-    .info-card:hover { transform: translateY(-8px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
-    .info-card i { font-size: 2.4rem; color: var(--azul); margin-bottom: 0.5rem; }
-
-    /* SLIDER */
-    .carousel-item img { border-radius: 16px; height: 500px; object-fit: cover; transition: transform 1s ease-in-out; }
-    .carousel-item img:hover { transform: scale(1.03); }
-
-    /* BENEFICIOS */
-    .feature-card { background: white; border-radius: 16px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); padding: 2rem 1rem; transition: 0.3s; text-align: center; }
-    .feature-card:hover { transform: translateY(-8px); background: var(--celeste); color: white; }
-    .feature-card i { font-size: 2.6rem; color: var(--azul); margin-bottom: 1rem; }
-    .feature-card:hover i { color: white; }
-
-    /* TESTIMONIOS */
-    .testimonial { background: white; border-left: 4px solid var(--celeste); border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: 0.3s; }
-    .testimonial:hover { transform: scale(1.03); }
-    .testimonial p { font-style: italic; }
-    .testimonial h6 { font-weight: 700; color: var(--azul); }
-
-    /* LOTES */
-    .mapa-3d-wrapper { perspective: 1000px; display: inline-block; }
-    .mapa-3d { transform: rotateY(0deg) rotateX(0deg); transition: transform 0.6s ease, box-shadow 0.6s ease; border-radius: 16px; }
-    .mapa-3d:hover { transform: rotateY(8deg) rotateX(6deg) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-
-    /* CONTACTO */
-    .contacto { background: var(--azul); color: white; text-align: center; }
-    .contacto .btn { background: var(--dorado); border: none; font-weight: 600; border-radius: 50px; padding: 0.8rem 2rem; }
-
-    /* PROMOCIONES */
-    .promo-badge { position:absolute; top:12px; left:12px; background: linear-gradient(45deg, var(--rojo-navidad), var(--verde-navidad)); color:#fff; font-weight:700; padding:.35rem .6rem; border-radius:999px; font-size:.75rem; }
-    .promo-card { overflow: hidden; border-radius:16px; box-shadow: 0 8px 24px rgba(0,0,0,.08); background:#fff; transition: transform .25s ease, box-shadow .25s ease; }
-    .promo-card:hover { transform: translateY(-6px); box-shadow: 0 12px 28px rgba(0,0,0,.12); }
-    .promo-card img { width: 100%; height: 260px; object-fit: cover; }
-
-    .filter-pill{ border-radius:999px; font-weight:600; }
-
-    /* FOOTER */
-    footer { background: #0f172a; color: #cbd5e1; text-align: center; padding: 2rem 0; font-size: 0.9rem; }
-
-    /* BOTÓN FLOTANTE */
-    .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background-color: #25d366; color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; font-size: 2rem; z-index: 999; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-    .whatsapp-float:hover { background-color: #20b858; text-decoration: none; }
-      /* Luces navideñas superiores */
-    .lights{position:fixed; top:40px; left:0; right:0; height:14px; z-index:1030; background:
-      repeating-linear-gradient(90deg,
-        #f87171 0 16px,#fde047 16px 32px,#34d399 32px 48px,#60a5fa 48px 64px);
-      box-shadow:0 4px 12px rgba(0,0,0,.15);
-      animation: twinkle 2.2s ease-in-out infinite alternate;
-    }
-    @keyframes twinkle{from{filter:brightness(.95)}to{filter:brightness(1.15)}}
-
-    /* Garlanda bajo los títulos */
-    .section-title{position:relative}
-    .section-title::after{content:""; position:absolute; left:50%; transform:translateX(-50%); bottom:-14px; width:200px; height:6px; border-radius:999px; background:linear-gradient(90deg,#b91c1c,#facc15,#065f46); box-shadow:0 2px 8px rgba(0,0,0,.15)}
-
-    /* Brillo festivo */
-    .xmas-glow{box-shadow:0 0 0 4px rgba(250,204,21,.15), 0 8px 30px rgba(185,28,28,.2)}
-
-    /* Botón con pulso sutil */
+    /* HERO SLIDER */
+    .hero{height:100vh;background:none}
+    .hero-slide img{height:100vh;width:100%;object-fit:cover;filter:brightness(.78)}
+    #heroCarousel .carousel-item.active img{animation:kenburns 7s ease-in-out forwards}
+    @keyframes kenburns{from{transform:scale(1)} to{transform:scale(1.1)}}
+    .hero .carousel-caption{top:0;bottom:0}
+    #heroCarousel .carousel-indicators [data-bs-target]{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.6)}
+    #heroCarousel .carousel-indicators .active{background:var(--dorado)}
     .pulse{animation:pulse 1.6s ease-in-out infinite}
     @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
 
-    /* Fondo nevado suave */
-    body{ background: radial-gradient(circle at 10% 10%, rgba(255,255,255,.8) 2px, transparent 3px) 0 0/22px 22px,
-                         radial-gradient(circle at 60% 40%, rgba(255,255,255,.7) 1.5px, transparent 3px) 0 0/26px 26px,
-                         var(--gris-claro); }
+    /* SECCIONES */
+    section{padding:5rem 0}
+    .section-title{color:var(--azul);font-weight:700;margin-bottom:1rem;text-align:center}
 
-    /* Borde bastón de caramelo para PROMOCIONES */
-    #promociones{ position:relative }
-    #promociones::before{ content:""; position:absolute; inset:-8px 0 auto 0; height:14px; background:
-      repeating-linear-gradient(45deg, #b91c1c 0 12px, #ffffff 12px 24px, #065f46 24px 36px); filter:drop-shadow(0 2px 6px rgba(0,0,0,.1)); border-radius:12px 12px 0 0; }
-    #promociones .promo-card{ border: 2px dashed rgba(185,28,28,.25); }
+    /* INFO CARDS (Proyecto) */
+    .info-card{background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,.05);padding:2rem 1rem;text-align:center;transition:.3s}
+    .info-card:hover{transform:translateY(-6px);box-shadow:0 6px 16px rgba(0,0,0,.1)}
+    .info-card i{font-size:2rem;color:var(--azul);margin-bottom:.5rem}
 
-    /* Icono campana animado al lado de Promociones en navbar */
-    .nav-link[href="#promociones"]::after{ content:"7a2"; font-family:"bootstrap-icons"; margin-left:.4rem; display:inline-block; animation: ring 1.8s ease-in-out infinite; transform-origin: top center; }
-    @keyframes ring{ 0%{ transform: rotate(0) } 10%{ transform: rotate(18deg) } 20%{ transform: rotate(-16deg)} 30%{ transform: rotate(12deg)} 40%{ transform: rotate(-8deg)} 50%{ transform: rotate(4deg)} 60%,100%{ transform: rotate(0)} }
+    /* LOTES */
+    .mapa-3d-wrapper{perspective:1000px;display:inline-block}
+    .mapa-3d{transition:transform .6s ease,box-shadow .6s ease;border-radius:16px}
+    .mapa-3d:hover{transform:rotateY(8deg) rotateX(6deg) scale(1.03);box-shadow:0 20px 40px rgba(0,0,0,.3)}
 
-    /* Hero carousel full height */
-    .hero{ height:100vh; background:none; }
-    .hero-slide img{ height:100vh; object-fit:cover; filter:brightness(.75); }
-    .hero .carousel-caption{ top:0; bottom:0; }
+    /* BENEFICIOS */
+    .feature-card{background:#fff;border-radius:16px;box-shadow:0 3px 10px rgba(0,0,0,.05);padding:2rem 1rem;text-align:center;transition:.3s}
+    .feature-card i{font-size:2.2rem;color:var(--azul);margin-bottom:.7rem}
+    .feature-card:hover{transform:translateY(-6px);background:var(--celeste);color:#fff}
+    .feature-card:hover i{color:#fff}
 
-    /* Indicadores del hero más visibles */
-    #heroCarousel .carousel-indicators [data-bs-target]{ width:12px; height:12px; border-radius:50%; background-color:rgba(255,255,255,.7); }
-    #heroCarousel .carousel-indicators .active{ background-color: var(--dorado); }
+    /* PROMOCIONES */
+    #promociones{position:relative;background:linear-gradient(180deg,#fff,#f8fafc)}
+    .promo-stamp{
+      position:absolute;top:-22px;left:50%;transform:translateX(-50%) rotate(-6deg);
+      background:linear-gradient(135deg,#b91c1c,#dc2626,#f59e0b);color:#fff;font-weight:800;
+      padding:.5rem 1rem;border-radius:999px;box-shadow:0 10px 24px rgba(220,38,38,.25);letter-spacing:.5px;z-index:2
+    }
+    .filter-pill{border-radius:999px;font-weight:700;padding:.5rem 1rem;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+    .filter-pill.active{background:linear-gradient(90deg,#b91c1c,#065f46);color:#fff;border-color:transparent}
 
-    /* Sello flotante Navidad 2025 */
-    .promo-stamp{ position:absolute; top:-18px; right:12px; z-index:2; background:linear-gradient(135deg,#b91c1c,#dc2626,#f59e0b); color:#fff; font-weight:800; padding:.5rem 1rem; border-radius:999px; transform: rotate(-8deg); box-shadow:0 10px 24px rgba(220,38,38,.25); letter-spacing:.5px; }
-    @media (max-width: 768px){ .promo-stamp{ top:-12px; right:8px; transform: rotate(-6deg) scale(.9); } }
+    .promo-card{overflow:hidden;border:0;border-radius:18px;background:#fff;
+      box-shadow:0 14px 32px rgba(2,6,23,.08);transition:transform .25s ease,box-shadow .25s ease}
+    .promo-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(2,6,23,.12)}
+    .promo-thumb{position:relative;aspect-ratio:16/9;overflow:hidden}
+    .promo-thumb img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);
+      transition:transform .5s ease,filter .5s ease;filter:saturate(1.02) contrast(1.02)}
+    .promo-card:hover .promo-thumb img{transform:scale(1.08);filter:saturate(1.08) contrast(1.05)}
+    .promo-chip{position:absolute;top:12px;left:12px;padding:.3rem .7rem;border-radius:999px;
+      font-size:.8rem;font-weight:800;color:#fff;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+    .chip-navidad{background:linear-gradient(45deg,#b91c1c,#16a34a)}
+    .chip-verano{background:linear-gradient(45deg,#0284c7,#22c55e)}
+    .chip-otros{background:linear-gradient(45deg,#6b7280,#111827)}
+    .badge-nuevo{position:absolute;top:12px;right:12px;background:#22c55e;color:#fff;font-size:.7rem;font-weight:700;border-radius:6px;padding:.25rem .5rem}
+    .badge-ultimos{position:absolute;top:12px;right:12px;background:#b91c1c;color:#fff;font-size:.7rem;font-weight:700;border-radius:6px;padding:.25rem .5rem}
+    .btn-icon{border-radius:12px;padding:.45rem .6rem;display:inline-flex;align-items:center;gap:.35rem;font-weight:700}
+    .btn-icon i{font-size:1rem}
 
-    /* Hero carousel full height + Ken Burns */
-    .hero{ height:100vh; background:none; }
-    .hero-slide img{ height:100vh; width:100%; object-fit:cover; filter:brightness(.78); will-change:transform; }
-    #heroCarousel .carousel-item.active img{ animation: kenburns 7s ease-in-out forwards; }
-    @keyframes kenburns{ from{ transform: scale(1) translateY(0) } to{ transform: scale(1.07) translateY(-1.5%) } }
-    .hero .carousel-caption{ top:0; bottom:0; }
+    /* GALERÍA */
+    #slider img{border-radius:16px;height:500px;object-fit:cover}
 
-</style>
+    /* CONTACTO/FOOTER */
+    footer{background:#0f172a;color:#cbd5e1;text-align:center;padding:2rem 0;font-size:.9rem}
+  </style>
 </head>
 
 <body>
-  <!-- Luces superiores -->
-  <div class="lights" aria-hidden="true"></div>
-  <!-- CINTA NAVIDEÑA -->
-  <div class="xmas-ribbon py-2 text-center">
-    🎄 <span class="me-2">Campaña Navideña: ¡Últimos días sin intereses!</span>
-    <i class="bi bi-clock-history me-1"></i>
-    <span class="timer" id="countdown"></span>
-    <a href="#promociones" class="btn btn-sm btn-light ms-3 fw-bold">Ver promociones</a>
-  </div>
 
-  <!-- NAV -->
-  <nav class="navbar navbar-expand-lg fixed-top" style="top:40px">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">
-        <img src="logo2.png" alt="Las Villas de Carhuaz">
-      </a>
-      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div id="navbarNav" class="collapse navbar-collapse justify-content-end">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a href="#proyecto" class="nav-link">Proyecto</a></li>
-          <li class="nav-item"><a href="#promociones" class="nav-link fw-semibold text-danger"><i class="bi bi-gift me-1"></i>Promociones</a></li>
-          <li class="nav-item"><a href="#beneficios" class="nav-link">Beneficios</a></li>
-          <li class="nav-item"><a href="#slider" class="nav-link">Galería</a></li>
-          <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#"><img src="logo2.png" alt="Las Villas de Carhuaz"></a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+    <div id="navbarNav" class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="#proyecto" class="nav-link">Proyecto</a></li>
+        <li class="nav-item"><a href="#promociones" class="nav-link fw-semibold text-danger"><i class="bi bi-gift me-1"></i>Promociones</a></li>
+        <li class="nav-item"><a href="#beneficios" class="nav-link">Beneficios</a></li>
+        <li class="nav-item"><a href="#slider" class="nav-link">Galería</a></li>
+        <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SLIDER -->
+<header class="hero">
+  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4500">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active hero-slide">
+        <img src="bg1.png" class="d-block w-100" alt="Slide 1">
+        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center text-center">
+          <h1 class="fw-bold mb-3">🎄 Tu mejor regalo: <span style="color:var(--dorado)">tu terreno propio</span></h1>
+          <p class="lead">Hasta 6 meses sin intereses • Promos navideñas disponibles</p>
+          <a href="#promociones" class="btn btn-warning btn-lg fw-bold pulse"><i class="bi bi-gift me-2"></i>Ver Promociones</a>
+        </div>
+      </div>
+      <div class="carousel-item hero-slide">
+        <img src="bg2.png" class="d-block w-100" alt="Slide 2">
+        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center text-center">
+          <h1 class="fw-bold mb-3">Lotes desde <span style="color:var(--dorado)">300 m²</span></h1>
+          <p class="lead">Zona segura • Accesos afirmados • Entorno natural</p>
+          <a href="#lotes" class="btn btn-outline-light btn-lg">Ver distribución</a>
+        </div>
+      </div>
+      <div class="carousel-item hero-slide">
+        <img src="bg3.png" class="d-block w-100" alt="Slide 3">
+        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center text-center">
+          <h1 class="fw-bold mb-3">A solo 15 min de Ica</h1>
+          <p class="lead">Ubicación estratégica para vivir o invertir</p>
+          <a href="#contacto" class="btn btn-outline-light btn-lg"><i class="bi bi-whatsapp me-2"></i>Hablar con un asesor</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PROYECTO -->
+<section id="proyecto" class="container">
+  <h2 class="section-title">Datos del Proyecto</h2>
+  <div class="row g-4">
+    <div class="col-md-3 col-6"><div class="info-card"><i class="bi bi-cash-stack"></i><h5 class="mt-2">Desde S/ 10,000</h5><p class="mb-0">Pago único al contado</p></div></div>
+    <div class="col-md-3 col-6"><div class="info-card"><i class="bi bi-aspect-ratio"></i><h5 class="mt-2">Lotes desde 300 m²</h5><p class="mb-0">Amplios y urbanizados</p></div></div>
+    <div class="col-md-3 col-6"><div class="info-card"><i class="bi bi-geo-alt"></i><h5 class="mt-2">Km 23.5 Carhuaz</h5><p class="mb-0">A 15 min de Ica</p></div></div>
+    <div class="col-md-3 col-6"><div class="info-card"><i class="bi bi-lightning-charge"></i><h5 class="mt-2">Servicios proyectados</h5><p class="mb-0">Agua y energía</p></div></div>
+  </div>
+</section>
+
+<!-- LOTES -->
+<section id="lotes" class="py-5" style="background: linear-gradient(135deg, #f9fafb, #eef2ff); overflow:hidden;">
+  <div class="container">
+    <h2 class="section-title mb-5">Elige Tu Lote Ideal</h2>
+    <div class="row align-items-center g-5">
+      <div class="col-md-6 text-center">
+        <div class="mapa-3d-wrapper mx-auto">
+          <img src="mapa2.png" alt="Plano del Proyecto Las Villas de Carhuaz" class="img-fluid mapa-3d shadow-lg" style="max-height: 500px; object-fit: contain;">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h3 class="fw-bold" style="color: var(--azul);">¿Te interesa nuestro proyecto?</h3>
+        <p class="mt-3">Explora la distribución de nuestros <strong>lotes desde 300 m²</strong>. Vive rodeado de naturaleza, cerca de la ciudad.</p>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>✅ Lotes disponibles en zona urbanizada</li>
+          <li>✅ Accesos afirmados y vías internas</li>
+          <li>✅ Entorno tranquilo con valorización</li>
         </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header class="hero p-0">
-    <div class="snow" aria-hidden="true" id="snow"></div>
-    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4500">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active hero-slide">
-          <img src="bg2.png" class="d-block w-100" alt="Las Villas de Carhuaz - slide 1">
-          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-            <h1 class="fw-bold mb-3">Tu mejor regalo: <span style="color: var(--dorado)">tu terreno propio</span></h1>
-            <p class="lead">Hasta 6 meses sin intereses • Promos navideñas disponibles</p>
-            <a href="#promociones" class="btn btn-lg pulse mt-2"><i class="bi bi-gift me-2"></i>Ver Promociones</a>
-          </div>
-        </div>
-        <div class="carousel-item hero-slide">
-          <img src="bg2.png" class="d-block w-100" alt="Las Villas de Carhuaz - slide 2">
-          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-            <h1 class="fw-bold mb-3">Lotes desde <span style="color: var(--dorado)">300 m²</span></h1>
-            <p class="lead">Zona segura • Accesos afirmados • Entorno natural</p>
-            <a href="#lotes" class="btn btn-lg mt-2">Ver distribución</a>
-          </div>
-        </div>
-        <div class="carousel-item hero-slide">
-          <img src="bg2.png" class="d-block w-100" alt="Las Villas de Carhuaz - slide 3">
-          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-            <h1 class="fw-bold mb-3">A solo 15 min de Ica</h1>
-            <p class="lead">Ubicación estratégica para vivir o invertir</p>
-            <a href="#contacto" class="btn btn-lg mt-2"><i class="bi bi-whatsapp me-2"></i>Hablar con un asesor</a>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Siguiente</span>
-      </button>
-    </div>
-  </header>
-
-  <!-- INFO DEL PROYECTO -->
-  <section id="proyecto" class="container">
-    <h2 class="section-title">Datos del Proyecto</h2>
-    <div class="row g-4">
-      <div class="col-md-3 col-6"><div class="info-card"><i class="bi bi-cash-stack"></i><h5>Desde S/ 10,000</h5><p>Pago único al contado</p></div></div>
-      <div class="col-md-3 col-6"><div class="info-card"><i class="bi bi-aspect-ratio"></i><h5>Lotes desde 300 m²</h5><p>Amplios y urbanizados</p></div></div>
-      <div class="col-md-3 col-6"><div class="info-card"><i class="bi bi-geo-alt"></i><h5>Km 23.5 Carretera Carhuaz</h5><p>A solo 15 min de Ica</p></div></div>
-      <div class="col-md-3 col-6"><div class="info-card"><i class="bi bi-lightning-charge"></i><h5>Servicios proyectados</h5><p>Agua y energía</p></div></div>
-    </div>
-  </section>
-
-  <!-- SLIDER -->
-    <!-- PROMOCIONES - SECCIÓN MOVIDA ARRIBA -->
-    <!-- GALERÍA - SECCIÓN MOVIDA ABAJO -->
-    <!-- PROMOCIONES - ARRIBA -->
-    <!-- GALERÍA - ABAJO -->
-    <!-- PROMOCIONES - ARRIBA (confirmado) -->
- 
-
-  <!-- BENEFICIOS -->
-  <section id="beneficios" class="bg-light">
-    <div class="container text-center">
-      <h2 class="section-title">Beneficios del Proyecto</h2>
-      <div class="row g-4">
-        <div class="col-md-3 col-6"><div class="feature-card"><i class="bi bi-house-door"></i><h5>Zona Segura</h5><p>Urbanización con tranquilidad y seguridad.</p></div></div>
-        <div class="col-md-3 col-6"><div class="feature-card"><i class="bi bi-tree"></i><h5>Entorno Natural</h5><p>Rodeado de áreas verdes y aire puro.</p></div></div>
-        <div class="col-md-3 col-6"><div class="feature-card"><i class="bi bi-car-front"></i><h5>Accesos Afirmados</h5><p>Fácil llegada por carretera principal.</p></div></div>
-        <div class="col-md-3 col-6"><div class="feature-card"><i class="bi bi-graph-up"></i><h5>Alta Rentabilidad</h5><p>Excelente oportunidad de inversión.</p></div></div>
-      </div>
-    </div>
-  </section>
- <!-- PROMOCIONES - NUEVA SECCIÓN -->
-  <section id="promociones" class="py-5 position-relative" style="background:linear-gradient(180deg,#fff,#f8fafc)">
-    <div class="promo-stamp" aria-hidden="true">🎄 Navidad 2025</div>
-    <div class="container">
-      <div class="text-center mb-4">
-        <h2 class="section-title mb-2">Promociones de Temporada</h2>
-        <p class="text-muted">Revisa nuestros flyers de campañas: <strong>Navidad</strong>, <strong>Verano</strong> y <strong>Otros</strong>.</p>
-      </div>
-
-      <!-- Filtros -->
-      <div class="d-flex justify-content-center gap-2 mb-4">
-        <button class="btn btn-outline-dark filter-pill active" data-filter="all"><i class="bi bi-grid me-1"></i>Todo</button>
-        <button class="btn btn-outline-danger filter-pill" data-filter="navidad"><i class="bi bi-star me-1"></i>Navidad</button>
-        <button class="btn btn-outline-primary filter-pill" data-filter="verano"><i class="bi bi-sun me-1"></i>Verano</button>
-        <button class="btn btn-outline-secondary filter-pill" data-filter="otros"><i class="bi bi-tags me-1"></i>Otros</button>
-      </div>
-
-      <!-- Grid de Flyers -->
-      <div class="row g-4" id="promoGrid">
-        <!-- NAVIDAD -->
-        <div class="col-md-4 promo-item" data-category="navidad">
-          <div class="promo-card position-relative">
-            <span class="promo-badge">Navidad</span>
-            <img src="flyers/navidad1.jpg" alt="Flyer Navidad 1" loading="lazy">
-            <div class="p-3 d-flex justify-content-between align-items-center">
-              <div>
-                <h6 class="mb-0 fw-bold">Sin Intereses 6 meses</h6>
-                <small class="text-muted">Válido hasta el 31/12</small>
-              </div>
-              <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#lightbox" data-img="flyers/navidad1.jpg"><i class="bi bi-arrows-fullscreen"></i></button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 promo-item" data-category="navidad">
-          <div class="promo-card position-relative">
-            <span class="promo-badge">Navidad</span>
-            <img src="flyers/navidad2.jpg" alt="Flyer Navidad 2" loading="lazy">
-            <div class="p-3 d-flex justify-content-between align-items-center">
-              <div>
-                <h6 class="mb-0 fw-bold">Tu mejor regalo: tu terreno</h6>
-                <small class="text-muted">Hasta 31/12</small>
-              </div>
-              <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#lightbox" data-img="flyers/navidad2.jpg"><i class="bi bi-arrows-fullscreen"></i></button>
-            </div>
-          </div>
-        </div>
-
-        <!-- VERANO -->
-        <div class="col-md-4 promo-item" data-category="verano">
-          <div class="promo-card position-relative">
-            <span class="promo-badge" style="background:linear-gradient(45deg,#0284c7,#22c55e)">Verano</span>
-            <img src="flyers/verano1.jpg" alt="Flyer Verano 1" loading="lazy">
-            <div class="p-3 d-flex justify-content-between align-items-center">
-              <div>
-                <h6 class="mb-0 fw-bold">Verano: Bono de Escritura</h6>
-                <small class="text-muted">Próxima temporada</small>
-              </div>
-              <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#lightbox" data-img="flyers/verano1.jpg"><i class="bi bi-arrows-fullscreen"></i></button>
-            </div>
-          </div>
-        </div>
-
-        <!-- OTROS -->
-        <div class="col-md-4 promo-item" data-category="otros">
-          <div class="promo-card position-relative">
-            <span class="promo-badge" style="background:linear-gradient(45deg,#6b7280,#111827)">Promo</span>
-            <img src="flyers/otros1.jpg" alt="Flyer genérico 1" loading="lazy">
-            <div class="p-3 d-flex justify-content-between align-items-center">
-              <div>
-                <h6 class="mb-0 fw-bold">Días de Campo Familiar</h6>
-                <small class="text-muted">Evento especial</small>
-              </div>
-              <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#lightbox" data-img="flyers/otros1.jpg"><i class="bi bi-arrows-fullscreen"></i></button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="text-center mt-4">
-        <a href="#contacto" class="btn btn-danger btn-lg fw-bold"><i class="bi bi-gift me-2"></i>Quiero aprovechar las promos</a>
-      </div>
-    </div>
-  </section>
-  <!-- TESTIMONIOS -->
-  <section class="container">
-    <h2 class="section-title">Lo que dicen nuestros clientes</h2>
-    <div class="row g-4">
-      <div class="col-md-4"><div class="testimonial"><p>“Excelente atención, compré mi lote y el proceso fue muy claro.”</p><h6>– Carla M.</h6></div></div>
-      <div class="col-md-4"><div class="testimonial"><p>“Buena ubicación y precio justo. Muy satisfecho con mi inversión.”</p><h6>– Juan R.</h6></div></div>
-      <div class="col-md-4"><div class="testimonial"><p>“Una experiencia segura y confiable, todo bien documentado.”</p><h6>– Luis P.</h6></div></div>
-    </div>
-  </section>
-
-  <!-- SECCIÓN ELIGE TU LOTE - VERSIÓN MEJORADA -->
-  <section id="lotes" class="py-5" style="background: linear-gradient(135deg, #f9fafb, #eef2ff); overflow:hidden;">
-    <div class="container">
-      <h2 class="section-title mb-5">Elige Tu Lote Ideal</h2>
-      <div class="row align-items-center g-5">
-        <div class="col-md-6 text-center position-relative">
-          <div class="mapa-3d-wrapper mx-auto">
-            <img src="mapa2.png" alt="Plano del Proyecto Las Villas de Carhuaz" class="img-fluid mapa-3d shadow-lg" style="max-height: 500px; object-fit: contain;">
-          </div>
-        </div>
-        <div class="col-md-6" style="animation: fadeInUp 1.2s ease;">
-          <h3 class="fw-bold" style="color: var(--azul);">¿Te interesa nuestro proyecto?</h3>
-          <p class="mt-3">Explora la distribución de nuestros <strong>lotes amplios desde 300 m²</strong>. Vive rodeado de naturaleza, cerca de la ciudad, con todas las facilidades para construir tu hogar o invertir inteligentemente.</p>
-          <ul class="list-unstyled mt-3 mb-4">
-            <li>✅ Lotes disponibles en zona urbanizada</li>
-            <li>✅ Accesos afirmados y vías internas pavimentadas</li>
-            <li>✅ Entorno tranquilo y seguro con valorización constante</li>
-          </ul>
-          <p class="lead mb-4">¡Elige tu lote ahora y nuestro asesor se pondrá en contacto contigo!</p>
-          <a href="#contacto" class="btn btn-lg px-4 fw-bold" style="background: linear-gradient(90deg, var(--celeste), var(--azul)); color: white; border-radius: 50px;">
-            <i class="bi bi-whatsapp me-2"></i> Solicita Información
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-   <!-- GALERÍA - ABAJO (confirmado) -->
-  <section id="slider" class="container">
-    <h2 class="section-title">Galería del Proyecto</h2>
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3500">
-      <div class="carousel-inner rounded">
-        <div class="carousel-item active"><img src="foto1.jpg" class="d-block w-100" alt="Vista 1 (1600x900px)"></div>
-        <div class="carousel-item"><img src="foto2.jpg" class="d-block w-100" alt="Vista 2 (1600x900px)"></div>
-        <div class="carousel-item"><img src="foto3.jpg" class="d-block w-100" alt="Vista 3 (1600x900px)"></div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Siguiente</span>
-      </button>
-    </div>
-  </section>
- 
-
-  <!-- CONTACTO -->
-  <section id="contacto" class="contacto py-5">
-    <div class="container">
-      <h2 class="fw-bold mb-3">¡Contáctanos Hoy!</h2>
-      <p>Asesor de ventas disponible para brindarte toda la información.</p>
-      <form onsubmit="redirigirWhatsApp(event)" class="mt-4 mx-auto" style="max-width:600px;">
-        <div class="mb-3">
-          <input type="text" id="nombre" class="form-control" placeholder="Tu nombre" required />
-        </div>
-        <div class="mb-3">
-          <input type="text" id="mensaje" class="form-control" placeholder="Escribe tu consulta" required />
-        </div>
-        <button type="submit" class="btn btn-lg"><i class="bi bi-whatsapp me-2"></i>Enviar por WhatsApp</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p class="mb-0">&copy; 2025 Las Villas de Carhuaz | Con el respaldo de ELIKIM S.A.C.</p>
-  </footer>
-
-  <!-- WHATSAPP FLOAT -->
-  <a href="https://wa.me/51957320891" target="_blank" class="whatsapp-float" aria-label="Abrir WhatsApp">
-    <i class="bi bi-whatsapp"></i>
-  </a>
-
-  <!-- MODAL LIGHTBOX -->
-  <div class="modal fade" id="lightbox" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content bg-dark">
-        <div class="modal-body p-0 position-relative">
-          <button type="button" class="btn btn-light position-absolute end-0 m-2" data-bs-dismiss="modal" aria-label="Cerrar"><i class="bi bi-x-lg"></i></button>
-          <img src="" id="lightboxImg" alt="Flyer" class="w-100" style="max-height:80vh;object-fit:contain;"/>
-        </div>
+        <a href="#contacto" class="btn btn-lg px-4 fw-bold" style="background: linear-gradient(90deg, var(--celeste), var(--azul)); color: white; border-radius: 50px;">
+          <i class="bi bi-whatsapp me-2"></i> Solicita Información
+        </a>
       </div>
     </div>
   </div>
+</section>
 
-  <script>
-    // WhatsApp
-    function redirigirWhatsApp(e) {
-      e.preventDefault();
-      const nombre = document.getElementById("nombre").value.trim();
-      const mensaje = document.getElementById("mensaje").value.trim();
-      const texto = encodeURIComponent(`Hola, soy ${nombre}. ${mensaje}`);
-      window.open(`https://wa.me/51957320891?text=${texto}`, "_blank");
-    }
+<!-- === PROMOCIONES (ARRIBA respecto a Galería) === -->
+<section id="promociones" class="py-5">
+  <div class="promo-stamp">🎁 Navidad 2025</div>
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="section-title text-primary">Promociones de Temporada</h2>
+      <p class="text-muted">Descubre nuestras campañas <strong>Navidad</strong>, <strong>Verano</strong> y <strong>Otras</strong>.</p>
+    </div>
 
-    // Countdown hasta 31 Dic 2025 23:59 America/Lima
-    (function(){
-      const target = new Date('2025-12-31T23:59:00-05:00').getTime();
-      const el = document.getElementById('countdown');
-      function tick(){
-        const now = Date.now();
-        let diff = Math.max(0, target - now);
-        const d = Math.floor(diff / (1000*60*60*24)); diff %= (1000*60*60*24);
-        const h = Math.floor(diff / (1000*60*60)); diff %= (1000*60*60);
-        const m = Math.floor(diff / (1000*60)); diff %= (1000*60);
-        const s = Math.floor(diff / 1000);
-        el.textContent = `${d}d ${h}h ${m}m ${s}s`;
-      }
-      tick(); setInterval(tick, 1000);
-    })();
+    <!-- mini slider destacado -->
+    <div id="promoHighlight" class="carousel slide mb-5" data-bs-ride="carousel" data-bs-interval="3500">
+      <div class="carousel-inner rounded shadow">
+        <div class="carousel-item active"><img src="flyers/navidad1.jpg" class="d-block w-100" alt="Destacado 1"></div>
+        <div class="carousel-item"><img src="flyers/navidad2.jpg" class="d-block w-100" alt="Destacado 2"></div>
+        <div class="carousel-item"><img src="flyers/verano1.jpg" class="d-block w-100" alt="Destacado 3"></div>
+      </div>
+    </div>
 
-    // Copos de nieve (20 elementos con duraciones aleatorias)
-    (function(){
-      const snow = document.getElementById('snow');
+    <!-- filtros -->
+    <div class="d-flex justify-content-center gap-2 mb-4">
+      <button class="btn btn-outline-dark filter-pill active" data-filter="all"><i class="bi bi-grid me-1"></i>Todo</button>
+      <button class="btn btn-outline-danger filter-pill" data-filter="navidad"><i class="bi bi-tree me-1"></i>Navidad</button>
+      <button class="btn btn-outline-primary filter-pill" data-filter="verano"><i class="bi bi-sun me-1"></i>Verano</button>
+      <button class="btn btn-outline-secondary filter-pill" data-filter="otros"><i class="bi bi-tags me-1"></i>Otros</button>
+    </div>
+
+    <div id="promoEmpty" class="text-center text-muted d-none mb-4">No hay promociones para este filtro. 🎅</div>
+
+    <!-- grid -->
+    <div class="row g-4" id="promoGrid">
+      <!-- Navidad -->
+      <div class="col-lg-4 col-md-6 promo-item" data-category="navidad">
+        <article class="promo-card h-100">
+          <div class="promo-thumb">
+            <img src="flyers/navidad1.jpg" alt="Navidad: Sin intereses 6 meses">
+            <span class="promo-chip chip-navidad"><i class="bi bi-tree-fill me-1"></i>Navidad</span>
+            <span class="badge-ultimos">Últimos días</span>
+          </div>
+          <div class="p-3 d-flex flex-column gap-2">
+            <h6 class="fw-bold mb-1">Sin Intereses 6 meses</h6>
+            <small class="text-muted">Válido hasta el 31/12</small>
+            <div class="d-flex gap-2 mt-auto">
+              <button class="btn btn-outline-success btn-icon" data-bs-toggle="modal" data-bs-target="#lightbox" data-img="flyers/navidad1.jpg" data-title="Sin Intereses 6 meses"><i class="bi bi-arrows-fullscreen"></i>Ver</button>
+              <a class="btn btn-outline-primary btn-icon" target="_blank" href="https://wa.me/51957320891?text=Promo%20Navidad%20-%20Sin%20intereses%206%20meses%20%E2%80%93%20Las%20Villas%20de%20Carhuaz"><i class="bi bi-whatsapp"></i>WhatsApp</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-lg-4 col-md-6 promo-item" data-category="navidad">
+        <article class="promo-card h-100">
+          <div class="promo-thumb">
+            <img src="flyers/navidad2.jpg" alt="Navidad: Tu mejor regalo tu terreno">
+            <span class="promo-chip chip-navidad"><i class="bi bi-tree-fill me-1"></i>Navidad</span>
+          </div>
+          <div class="p-3 d-flex flex-column gap-2">
+            <h6 class="fw-bold mb-1">Tu mejor regalo: tu terreno</h6>
+            <small class="text-muted">Hasta 31/12</small>
+            <div class="d-flex gap-2 mt-auto">
+              <button class="btn btn-outline-success btn-icon" data-bs-toggle="modal" data-bs-target="#lightbox" data-img="flyers/navidad2.jpg" data-title="Tu mejor regalo: tu terreno"><i class="bi bi-arrows-fullscreen"></i>Ver</button>
+              <a class="btn btn-outline-primary btn-icon" target="_blank" href="https://wa.me/51957320891?text=Tu%20mejor%20regalo:%20tu%20terreno%20%E2%80%93%20Las%20Villas%20de%20Carhuaz"><i class="bi bi-whatsapp"></i>WhatsApp</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Verano -->
+      <div class="col-lg-4 col-md-6 promo-item" data-category="verano">
+        <article class="promo-card h-100">
+          <div class="promo-thumb">
+            <img src="flyers/verano1.jpg" alt="Verano: Bono de Escritura">
+            <span class="promo-chip chip-verano"><i class="bi bi-sun-fill me-1"></i>Verano</span>
+            <span class="badge-nuevo">Nuevo</span>
+          </div>
+          <div class="p-3 d-flex flex-column gap-2">
+            <h6 class="fw-bold mb-1">Verano: Bono de Escritura</h6>
+            <small class="text-muted">Próxima temporada</small>
+            <div class="d-flex gap-2 mt-auto">
+              <button class="btn btn-outline-success btn-icon" data-bs-toggle="modal" data-bs-target="#lightbox" data-img="flyers/verano1.jpg" data-title="Verano: Bono de Escritura"><i class="bi bi-arrows-fullscreen"></i>Ver</button>
+              <a class="btn btn-outline-primary btn-icon" target="_blank" href="https://wa.me/51957320891?text=Promo%20Verano%20-%20Bono%20de%20Escritura%20%E2%80%93%20Las%20Villas%20de%20Carhuaz"><i class="bi bi-whatsapp"></i>WhatsApp</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Otros (ejemplo) -->
+      <div class="col-lg-4 col-md-6 promo-item" data-category="otros">
+        <article class="promo-card h-100">
+          <div class="promo-thumb">
+            <img src="flyers/otros1.jpg" alt="Días de Campo Familiar">
+            <span class="promo-chip chip-otros"><i class="bi bi-tag-fill me-1"></i>Promo</span>
+          </div>
+          <div class="p-3 d-flex flex-column gap-2">
+            <h6 class="fw-bold mb-1">Días de Campo Familiar</h6>
+            <small class="text-muted">Evento especial</small>
+            <div class="d-flex gap-2 mt-auto">
+              <button class="btn btn-outline-success btn-icon" data-bs-toggle="modal" data-bs-target="#lightbox" data-img="flyers/otros1.jpg" data-title="Días de Campo Familiar"><i class="bi bi-arrows-fullscreen"></i>Ver</button>
+              <a class="btn btn-outline-primary btn-icon" target="_blank" href="https://wa.me/51957320891?text=D%C3%ADas%20de%20Campo%20Familiar%20%E2%80%93%20Las%20Villas%20de%20Carhuaz"><i class="bi bi-whatsapp"></i>WhatsApp</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="#contacto" class="btn btn-danger btn-lg fw-bold pulse" data-confetti><i class="bi bi-gift me-2"></i>Quiero aprovechar las promos</a>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section id="beneficios" class="bg-light">
+  <div class="container text-center">
+    <h2 class="section-title">Beneficios del Proyecto</h2>
+    <div class="row g-4">
+      <div class="col-md-3 col-6"><div class="feature-card"><i class="bi bi-house-door"></i><h5>Zona Segura</h5><p>Tranquilidad y seguridad.</p></div></div>
+      <div class="col-md-3 col-6"><div class="feature-card"><i class="bi bi-tree"></i><h5>Entorno Natural</h5><p>Áreas verdes y aire puro.</p></div></div>
+      <div class="col-md-3 col-6"><div class="feature-card"><i class="bi bi-car-front"></i><h5>Accesos Afirmados</h5><p>Vía principal cercana.</p></div></div>
+      <div class="col-md-3 col-6"><div class="feature-card"><i class="bi bi-graph-up"></i><h5>Alta Rentabilidad</h5><p>Excelente inversión.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- === GALERÍA (ABAJO) === -->
+<section id="slider" class="container py-5">
+  <h2 class="section-title text-primary">Galería del Proyecto</h2>
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3500">
+    <div class="carousel-inner rounded">
+      <div class="carousel-item active"><img src="foto1.jpg" class="d-block w-100" alt="Galería 1"></div>
+      <div class="carousel-item"><img src="foto2.jpg" class="d-block w-100" alt="Galería 2"></div>
+      <div class="carousel-item"><img src="foto3.jpg" class="d-block w-100" alt="Galería 3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="py-5" style="background:#1e3a8a;color:#fff">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-3">¡Contáctanos Hoy!</h2>
+    <p>Asesor de ventas disponible para brindarte toda la información.</p>
+    <form onsubmit="redirigirWhatsApp(event)" class="mt-4 mx-auto" style="max-width:600px;">
+      <div class="mb-3"><input type="text" id="nombre" class="form-control" placeholder="Tu nombre" required /></div>
+      <div class="mb-3"><input type="text" id="mensaje" class="form-control" placeholder="Escribe tu consulta" required /></div>
+      <button type="submit" class="btn btn-lg btn-warning fw-bold"><i class="bi bi-whatsapp me-2"></i>Enviar por WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<footer><p class="mb-0">&copy; 2025 Las Villas de Carhuaz | Con el respaldo de ELIKIM S.A.C.</p></footer>
+
+<!-- LIGHTBOX -->
+<div class="modal fade" id="lightbox" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark">
+      <div class="modal-body p-0 position-relative">
+        <button type="button" class="btn btn-light position-absolute end-0 m-2" data-bs-dismiss="modal" aria-label="Cerrar"><i class="bi bi-x-lg"></i></button>
+        <img src="" id="lightboxImg" alt="Flyer" class="w-100" style="max-height:80vh;object-fit:contain;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JS -->
+<script>
+  // WhatsApp
+  function redirigirWhatsApp(e){
+    e.preventDefault();
+    const nombre=document.getElementById('nombre').value.trim();
+    const mensaje=document.getElementById('mensaje').value.trim();
+    const texto=encodeURIComponent(`Hola, soy ${nombre}. ${mensaje}`);
+    window.open(`https://wa.me/51957320891?text=${texto}`,'_blank');
+  }
+
+  // Confetti CTA
+  (function(){
+    const btn=document.querySelector('[data-confetti]');
+    if(!btn) return;
+    btn.addEventListener('click',()=>{
+      const burst=document.createElement('div');
+      burst.style.position='fixed';burst.style.inset='0';burst.style.pointerEvents='none';
       for(let i=0;i<80;i++){
-        const flake = document.createElement('i');
-        flake.style.left = Math.random()*100 + 'vw';
-        flake.style.animationDuration = (6 + Math.random()*6) + 's';
-        flake.style.opacity = (0.6 + Math.random()*0.4).toFixed(2);
-        flake.style.scale = (0.6 + Math.random()*1.2).toFixed(2);
-        snow.appendChild(flake);
+        const p=document.createElement('i');
+        p.style.position='absolute';p.style.left=(Math.random()*100)+'vw';p.style.top='50vh';
+        p.style.width='8px';p.style.height='8px';
+        p.style.background=['#f87171','#fde047','#34d399','#60a5fa'][i%4];
+        p.style.transform=`translateY(0) rotate(${Math.random()*360}deg)`;
+        p.style.animation=`conf ${800+Math.random()*800}ms ease-out forwards`;
+        burst.appendChild(p);
       }
-    })();
-
-    // Filtros de promociones
-    (function(){
-      const buttons = document.querySelectorAll('[data-filter]');
-      const items = document.querySelectorAll('.promo-item');
-      buttons.forEach(btn=>btn.addEventListener('click',()=>{
-        buttons.forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        const f = btn.getAttribute('data-filter');
-        items.forEach(it=>{
-          const show = f==='all' || it.dataset.category===f;
-          it.style.display = show ? '' : 'none';
-        });
-      }));
-    })();
-
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    lightbox.addEventListener('show.bs.modal', function (event) {
-      const btn = event.relatedTarget;
-      const imgSrc = btn?.getAttribute('data-img') || '';
-      document.getElementById('lightboxImg').src = imgSrc;
-    });
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">    // Confetti simple en CTA de promociones
-    (function(){
-      const btn = document.querySelector('[data-confetti]');
-      if(!btn) return;
-      btn.addEventListener('click',()=>{
-        const burst = document.createElement('div');
-        burst.style.position='fixed'; burst.style.inset='0'; burst.style.pointerEvents='none';
-        for(let i=0;i<80;i++){
-          const p=document.createElement('i');
-          p.style.position='absolute'; p.style.left=(Math.random()*100)+'vw'; p.style.top='50vh';
-          p.style.width='8px'; p.style.height='8px'; p.style.background=['#f87171','#fde047','#34d399','#60a5fa'][i%4];
-          p.style.transform=`translateY(0) rotate(${Math.random()*360}deg)`;
-          p.style.animation=`conf ${800+Math.random()*800}ms ease-out forwards`;
-          burst.appendChild(p);
-        }
-        document.body.appendChild(burst);
-        setTimeout(()=>burst.remove(),1600);
-      });
+      document.body.appendChild(burst);
+      setTimeout(()=>burst.remove(),1600);
       const style=document.createElement('style');
-      style.textContent='@keyframes conf{to{transform:translateY(-60vh) rotate(720deg); opacity:0}}';
+      style.textContent='@keyframes conf{to{transform:translateY(-60vh) rotate(720deg);opacity:0}}';
       document.head.appendChild(style);
-    })();
-  </script>
+    });
+  })();
+
+  // Filtros + estado vacío
+  (function(){
+    const buttons=document.querySelectorAll('[data-filter]');
+    const items=document.querySelectorAll('.promo-item');
+    const empty=document.getElementById('promoEmpty');
+    function apply(filter){
+      let visible=0;
+      items.forEach(it=>{
+        const show=(filter==='all'||it.dataset.category===filter);
+        it.style.display=show?'':'none';
+        visible+=show?1:0;
+      });
+      if(empty){ empty.classList.toggle('d-none',visible!==0); }
+    }
+    buttons.forEach(btn=>btn.addEventListener('click',()=>{
+      buttons.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      apply(btn.getAttribute('data-filter'));
+    }));
+    apply('all');
+  })();
+
+  // Lightbox
+  const lightbox=document.getElementById('lightbox');
+  lightbox.addEventListener('show.bs.modal',function(event){
+    const btn=event.relatedTarget;
+    const imgSrc=btn?.getAttribute('data-img')||'';
+    const title=btn?.getAttribute('data-title')||'Flyer';
+    const img=document.getElementById('lightboxImg');
+    img.src=imgSrc; img.alt=title;
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -132,6 +132,21 @@
     .pulse{animation:pulse 1.6s ease-in-out infinite}
     @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
 
+    /* Fondo nevado suave */
+    body{ background: radial-gradient(circle at 10% 10%, rgba(255,255,255,.8) 2px, transparent 3px) 0 0/22px 22px,
+                         radial-gradient(circle at 60% 40%, rgba(255,255,255,.7) 1.5px, transparent 3px) 0 0/26px 26px,
+                         var(--gris-claro); }
+
+    /* Borde bastón de caramelo para PROMOCIONES */
+    #promociones{ position:relative }
+    #promociones::before{ content:""; position:absolute; inset:-8px 0 auto 0; height:14px; background:
+      repeating-linear-gradient(45deg, #b91c1c 0 12px, #ffffff 12px 24px, #065f46 24px 36px); filter:drop-shadow(0 2px 6px rgba(0,0,0,.1)); border-radius:12px 12px 0 0; }
+    #promociones .promo-card{ border: 2px dashed rgba(185,28,28,.25); }
+
+    /* Icono campana animado al lado de Promociones en navbar */
+    .nav-link[href="#promociones"]::after{ content:"7a2"; font-family:"bootstrap-icons"; margin-left:.4rem; display:inline-block; animation: ring 1.8s ease-in-out infinite; transform-origin: top center; }
+    @keyframes ring{ 0%{ transform: rotate(0) } 10%{ transform: rotate(18deg) } 20%{ transform: rotate(-16deg)} 30%{ transform: rotate(12deg)} 40%{ transform: rotate(-8deg)} 50%{ transform: rotate(4deg)} 60%,100%{ transform: rotate(0)} }
+
 </style>
 </head>
 
@@ -158,9 +173,9 @@
       <div id="navbarNav" class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
           <li class="nav-item"><a href="#proyecto" class="nav-link">Proyecto</a></li>
-          <li class="nav-item"><a href="#slider" class="nav-link">Galería</a></li>
+          <li class="nav-item"><a href="#promociones" class="nav-link fw-semibold text-danger"><i class="bi bi-gift me-1"></i>Promociones</a></li>
           <li class="nav-item"><a href="#beneficios" class="nav-link">Beneficios</a></li>
-          <li class="nav-item"><a href="#promociones" class="nav-link">Promociones</a></li>
+          <li class="nav-item"><a href="#slider" class="nav-link">Galería</a></li>
           <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
         </ul>
       </div>
@@ -172,7 +187,7 @@
     <div class="snow" aria-hidden="true" id="snow"></div>
     <h1>Encuentra tu lugar ideal<br>en <span style="color: var(--dorado)">Las Villas de Carhuaz</span></h1>
     <p>El lugar perfecto para construir la casa de tus sueños o invertir en tu futuro.</p>
-    <a href="#proyecto" class="btn btn-lg">Descubre Más</a>
+    <a href="#promociones" class="btn btn-lg pulse"><i class="bi bi-gift me-2"></i>Ver Promociones</a>
   </header>
 
   <!-- INFO DEL PROYECTO -->
@@ -191,7 +206,7 @@
     <!-- GALERÍA - SECCIÓN MOVIDA ABAJO -->
   <section id="slider" class="container">
     <h2 class="section-title">Galería del Proyecto</h2>
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3500">
       <div class="carousel-inner rounded">
         <div class="carousel-item active"><img src="foto1.jpg" class="d-block w-100" alt="Vista 1 (1600x900px)"></div>
         <div class="carousel-item"><img src="foto2.jpg" class="d-block w-100" alt="Vista 2 (1600x900px)"></div>
@@ -402,7 +417,7 @@
     // Copos de nieve (20 elementos con duraciones aleatorias)
     (function(){
       const snow = document.getElementById('snow');
-      for(let i=0;i<40;i++){
+      for(let i=0;i<80;i++){
         const flake = document.createElement('i');
         flake.style.left = Math.random()*100 + 'vw';
         flake.style.animationDuration = (6 + Math.random()*6) + 's';

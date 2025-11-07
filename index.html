@@ -160,6 +160,13 @@
     .promo-stamp{ position:absolute; top:-18px; right:12px; z-index:2; background:linear-gradient(135deg,#b91c1c,#dc2626,#f59e0b); color:#fff; font-weight:800; padding:.5rem 1rem; border-radius:999px; transform: rotate(-8deg); box-shadow:0 10px 24px rgba(220,38,38,.25); letter-spacing:.5px; }
     @media (max-width: 768px){ .promo-stamp{ top:-12px; right:8px; transform: rotate(-6deg) scale(.9); } }
 
+    /* Hero carousel full height + Ken Burns */
+    .hero{ height:100vh; background:none; }
+    .hero-slide img{ height:100vh; width:100%; object-fit:cover; filter:brightness(.78); will-change:transform; }
+    #heroCarousel .carousel-item.active img{ animation: kenburns 7s ease-in-out forwards; }
+    @keyframes kenburns{ from{ transform: scale(1) translateY(0) } to{ transform: scale(1.07) translateY(-1.5%) } }
+    .hero .carousel-caption{ top:0; bottom:0; }
+
 </style>
 </head>
 
@@ -198,7 +205,7 @@
   <!-- HERO -->
   <header class="hero p-0">
     <div class="snow" aria-hidden="true" id="snow"></div>
-    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3500">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4500">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -214,7 +221,7 @@
           </div>
         </div>
         <div class="carousel-item hero-slide">
-          <img src="bg1.png" class="d-block w-100" alt="Las Villas de Carhuaz - slide 2">
+          <img src="bg2.png" class="d-block w-100" alt="Las Villas de Carhuaz - slide 2">
           <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
             <h1 class="fw-bold mb-3">Lotes desde <span style="color: var(--dorado)">300 m²</span></h1>
             <p class="lead">Zona segura • Accesos afirmados • Entorno natural</p>
@@ -222,7 +229,7 @@
           </div>
         </div>
         <div class="carousel-item hero-slide">
-          <img src="bg1.png" class="d-block w-100" alt="Las Villas de Carhuaz - slide 3">
+          <img src="bg3.png" class="d-block w-100" alt="Las Villas de Carhuaz - slide 3">
           <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
             <h1 class="fw-bold mb-3">A solo 15 min de Ica</h1>
             <p class="lead">Ubicación estratégica para vivir o invertir</p>
@@ -257,6 +264,8 @@
     <!-- GALERÍA - SECCIÓN MOVIDA ABAJO -->
     <!-- PROMOCIONES - ARRIBA -->
     <!-- GALERÍA - ABAJO -->
+    <!-- PROMOCIONES - ARRIBA (confirmado) -->
+    <!-- GALERÍA - ABAJO (confirmado) -->
   <section id="slider" class="container">
     <h2 class="section-title">Galería del Proyecto</h2>
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3500">

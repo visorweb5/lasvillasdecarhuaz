@@ -17,6 +17,8 @@
       --celeste: #0ea5e9;
       --dorado: #facc15;
       --gris-claro: #f9fafb;
+      --rojo-navidad:#b91c1c;
+      --verde-navidad:#065f46;
     }
 
     html { scroll-behavior: smooth; }
@@ -27,18 +29,17 @@
       overflow-x: hidden;
     }
 
+    /* CINTA NAVIDEÑA SUPERIOR */
+    .xmas-ribbon{
+      background: linear-gradient(90deg, var(--rojo-navidad), #e11d48, var(--dorado));
+      color:#fff; font-weight:600; letter-spacing:.2px;
+    }
+    .xmas-ribbon .timer{ font-weight:700; }
+
     /* NAVBAR */
-    .navbar {
-      background: rgba(255,255,255,0.98);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
+    .navbar { background: rgba(255,255,255,0.98); box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
     .navbar-brand img { height: 60px; }
-    .nav-link {
-      color: #111 !important;
-      font-weight: 600;
-      margin-left: 1rem;
-      transition: color 0.3s ease;
-    }
+    .nav-link { color: #111 !important; font-weight: 600; margin-left: 1rem; transition: color 0.3s ease; }
     .nav-link:hover { color: var(--celeste) !important; }
 
     /* HERO PARALLAX */
@@ -46,184 +47,85 @@
       position: relative;
       height: 100vh;
       background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('bg2.png') center/cover fixed no-repeat;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
+      color: white; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center;
     }
-    .hero h1 {
-      font-size: 3.2rem;
-      font-weight: 700;
-      animation: fadeInDown 1.5s ease;
-    }
-    .hero p {
-      font-size: 1.3rem;
-      animation: fadeInUp 1.8s ease;
-    }
-    .hero .btn {
-      margin-top: 2rem;
-      background-color: var(--dorado);
-      border: none;
-      font-weight: 600;
-      border-radius: 50px;
-      padding: 0.9rem 2rem;
-      color: #111;
-      animation: fadeIn 2s ease;
-    }
-    .hero .btn:hover {
-      background-color: white;
-      color: var(--azul);
-    }
+    .hero h1 { font-size: 3.2rem; font-weight: 700; animation: fadeInDown 1.5s ease; }
+    .hero p { font-size: 1.3rem; animation: fadeInUp 1.8s ease; }
+    .hero .btn { margin-top: 2rem; background-color: var(--dorado); border: none; font-weight: 600; border-radius: 50px; padding: 0.9rem 2rem; color: #111; animation: fadeIn 2s ease; }
+    .hero .btn:hover { background-color: white; color: var(--azul); }
+
+    /* Copos de nieve sutiles */
+    .snow{ pointer-events:none; position:absolute; inset:0; overflow:hidden; }
+    .snow i{ position:absolute; top:-10px; width:8px; height:8px; background:#fff; border-radius:50%; opacity:.8; filter:drop-shadow(0 0 6px rgba(255,255,255,.7)); animation: fall linear infinite; }
+    @keyframes fall{ to { transform: translateY(110vh); } }
 
     /* Animaciones */
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     /* SECCIONES */
     section { padding: 5rem 0; }
-    .section-title {
-      color: var(--azul);
-      font-weight: 700;
-      margin-bottom: 2.5rem;
-      text-align: center;
-    }
+    .section-title { color: var(--azul); font-weight: 700; margin-bottom: 2.5rem; text-align: center; }
 
     /* INFO CARDS */
-    .info-card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-      padding: 2rem 1rem;
-      text-align: center;
-      transition: all 0.4s ease;
-    }
-    .info-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-    }
-    .info-card i {
-      font-size: 2.4rem;
-      color: var(--azul);
-      margin-bottom: 0.5rem;
-    }
+    .info-card { background: white; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); padding: 2rem 1rem; text-align: center; transition: all 0.4s ease; }
+    .info-card:hover { transform: translateY(-8px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
+    .info-card i { font-size: 2.4rem; color: var(--azul); margin-bottom: 0.5rem; }
 
     /* SLIDER */
-    .carousel-item img {
-      border-radius: 16px;
-      height: 500px;
-      object-fit: cover;
-      transition: transform 1s ease-in-out;
-    }
-    .carousel-item img:hover {
-      transform: scale(1.03);
-    }
+    .carousel-item img { border-radius: 16px; height: 500px; object-fit: cover; transition: transform 1s ease-in-out; }
+    .carousel-item img:hover { transform: scale(1.03); }
 
     /* BENEFICIOS */
-    .feature-card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-      padding: 2rem 1rem;
-      transition: 0.3s;
-      text-align: center;
-    }
-    .feature-card:hover {
-      transform: translateY(-8px);
-      background: var(--celeste);
-      color: white;
-    }
-    .feature-card i {
-      font-size: 2.6rem;
-      color: var(--azul);
-      margin-bottom: 1rem;
-    }
-    .feature-card:hover i {
-      color: white;
-    }
+    .feature-card { background: white; border-radius: 16px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); padding: 2rem 1rem; transition: 0.3s; text-align: center; }
+    .feature-card:hover { transform: translateY(-8px); background: var(--celeste); color: white; }
+    .feature-card i { font-size: 2.6rem; color: var(--azul); margin-bottom: 1rem; }
+    .feature-card:hover i { color: white; }
 
     /* TESTIMONIOS */
-    .testimonial {
-      background: white;
-      border-left: 4px solid var(--celeste);
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      transition: 0.3s;
-    }
-    .testimonial:hover {
-      transform: scale(1.03);
-    }
-    .testimonial p {
-      font-style: italic;
-    }
-    .testimonial h6 {
-      font-weight: 700;
-      color: var(--azul);
-    }
+    .testimonial { background: white; border-left: 4px solid var(--celeste); border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: 0.3s; }
+    .testimonial:hover { transform: scale(1.03); }
+    .testimonial p { font-style: italic; }
+    .testimonial h6 { font-weight: 700; color: var(--azul); }
+
+    /* LOTES */
+    .mapa-3d-wrapper { perspective: 1000px; display: inline-block; }
+    .mapa-3d { transform: rotateY(0deg) rotateX(0deg); transition: transform 0.6s ease, box-shadow 0.6s ease; border-radius: 16px; }
+    .mapa-3d:hover { transform: rotateY(8deg) rotateX(6deg) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
     /* CONTACTO */
-    .contacto {
-      background: var(--azul);
-      color: white;
-      text-align: center;
-    }
-    .contacto .btn {
-      background: var(--dorado);
-      border: none;
-      font-weight: 600;
-      border-radius: 50px;
-      padding: 0.8rem 2rem;
-    }
+    .contacto { background: var(--azul); color: white; text-align: center; }
+    .contacto .btn { background: var(--dorado); border: none; font-weight: 600; border-radius: 50px; padding: 0.8rem 2rem; }
+
+    /* PROMOCIONES */
+    .promo-badge { position:absolute; top:12px; left:12px; background: linear-gradient(45deg, var(--rojo-navidad), var(--verde-navidad)); color:#fff; font-weight:700; padding:.35rem .6rem; border-radius:999px; font-size:.75rem; }
+    .promo-card { overflow: hidden; border-radius:16px; box-shadow: 0 8px 24px rgba(0,0,0,.08); background:#fff; transition: transform .25s ease, box-shadow .25s ease; }
+    .promo-card:hover { transform: translateY(-6px); box-shadow: 0 12px 28px rgba(0,0,0,.12); }
+    .promo-card img { width: 100%; height: 260px; object-fit: cover; }
+
+    .filter-pill{ border-radius:999px; font-weight:600; }
 
     /* FOOTER */
-    footer {
-      background: #0f172a;
-      color: #cbd5e1;
-      text-align: center;
-      padding: 2rem 0;
-      font-size: 0.9rem;
-    }
+    footer { background: #0f172a; color: #cbd5e1; text-align: center; padding: 2rem 0; font-size: 0.9rem; }
 
     /* BOTÓN FLOTANTE */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background-color: #25d366;
-      color: white;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 2rem;
-      z-index: 999;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-    .whatsapp-float:hover {
-      background-color: #20b858;
-      text-decoration: none;
-    }
+    .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background-color: #25d366; color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; font-size: 2rem; z-index: 999; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    .whatsapp-float:hover { background-color: #20b858; text-decoration: none; }
   </style>
 </head>
 
 <body>
+  <!-- CINTA NAVIDEÑA -->
+  <div class="xmas-ribbon py-2 text-center">
+    🎄 <span class="me-2">Campaña Navideña: ¡Últimos días sin intereses!</span>
+    <i class="bi bi-clock-history me-1"></i>
+    <span class="timer" id="countdown"></span>
+    <a href="#promociones" class="btn btn-sm btn-light ms-3 fw-bold">Ver promociones</a>
+  </div>
 
   <!-- NAV -->
-  <nav class="navbar navbar-expand-lg fixed-top">
+  <nav class="navbar navbar-expand-lg fixed-top" style="top:40px">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#">
         <img src="logo2.png" alt="Las Villas de Carhuaz">
@@ -236,6 +138,7 @@
           <li class="nav-item"><a href="#proyecto" class="nav-link">Proyecto</a></li>
           <li class="nav-item"><a href="#slider" class="nav-link">Galería</a></li>
           <li class="nav-item"><a href="#beneficios" class="nav-link">Beneficios</a></li>
+          <li class="nav-item"><a href="#promociones" class="nav-link">Promociones</a></li>
           <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
         </ul>
       </div>
@@ -244,6 +147,7 @@
 
   <!-- HERO -->
   <header class="hero">
+    <div class="snow" aria-hidden="true" id="snow"></div>
     <h1>Encuentra tu lugar ideal<br>en <span style="color: var(--dorado)">Las Villas de Carhuaz</span></h1>
     <p>El lugar perfecto para construir la casa de tus sueños o invertir en tu futuro.</p>
     <a href="#proyecto" class="btn btn-lg">Descubre Más</a>
@@ -295,72 +199,116 @@
     </div>
   </section>
 
-<!-- SECCIÓN ELIGE TU LOTE - VERSIÓN MEJORADA -->
-<section id="lotes" class="py-5" style="background: linear-gradient(135deg, #f9fafb, #eef2ff); overflow:hidden;">
-  <div class="container">
-    <h2 class="section-title mb-5">Elige Tu Lote Ideal</h2>
-    <div class="row align-items-center g-5">
-
-      <!-- IMAGEN CON EFECTO 3D -->
-      <div class="col-md-6 text-center position-relative">
-        <div class="mapa-3d-wrapper mx-auto">
-          <img src="mapa2.png" 
-               alt="Plano del Proyecto Las Villas de Carhuaz" 
-               class="img-fluid mapa-3d shadow-lg" 
-               style="max-height: 500px; object-fit: contain;">
+  <!-- SECCIÓN ELIGE TU LOTE - VERSIÓN MEJORADA -->
+  <section id="lotes" class="py-5" style="background: linear-gradient(135deg, #f9fafb, #eef2ff); overflow:hidden;">
+    <div class="container">
+      <h2 class="section-title mb-5">Elige Tu Lote Ideal</h2>
+      <div class="row align-items-center g-5">
+        <div class="col-md-6 text-center position-relative">
+          <div class="mapa-3d-wrapper mx-auto">
+            <img src="mapa2.png" alt="Plano del Proyecto Las Villas de Carhuaz" class="img-fluid mapa-3d shadow-lg" style="max-height: 500px; object-fit: contain;">
+          </div>
+        </div>
+        <div class="col-md-6" style="animation: fadeInUp 1.2s ease;">
+          <h3 class="fw-bold" style="color: var(--azul);">¿Te interesa nuestro proyecto?</h3>
+          <p class="mt-3">Explora la distribución de nuestros <strong>lotes amplios desde 300 m²</strong>. Vive rodeado de naturaleza, cerca de la ciudad, con todas las facilidades para construir tu hogar o invertir inteligentemente.</p>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>✅ Lotes disponibles en zona urbanizada</li>
+            <li>✅ Accesos afirmados y vías internas pavimentadas</li>
+            <li>✅ Entorno tranquilo y seguro con valorización constante</li>
+          </ul>
+          <p class="lead mb-4">¡Elige tu lote ahora y nuestro asesor se pondrá en contacto contigo!</p>
+          <a href="#contacto" class="btn btn-lg px-4 fw-bold" style="background: linear-gradient(90deg, var(--celeste), var(--azul)); color: white; border-radius: 50px;">
+            <i class="bi bi-whatsapp me-2"></i> Solicita Información
+          </a>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- TEXTO Y CTA -->
-      <div class="col-md-6" style="animation: fadeInUp 1.2s ease;">
-        <h3 class="fw-bold" style="color: var(--azul);">¿Te interesa nuestro proyecto?</h3>
-        <p class="mt-3">Explora la distribución de nuestros <strong>lotes amplios desde 300 m²</strong>. 
-          Vive rodeado de naturaleza, cerca de la ciudad, con todas las facilidades para construir tu hogar o invertir inteligentemente.</p>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>✅ Lotes disponibles en zona urbanizada</li>
-          <li>✅ Accesos afirmados y vías internas pavimentadas</li>
-          <li>✅ Entorno tranquilo y seguro con valorización constante</li>
-        </ul>
-        <p class="lead mb-4">¡Elige tu lote ahora y nuestro asesor se pondrá en contacto contigo!</p>
-        <a href="#contacto" 
-           class="btn btn-lg px-4 fw-bold" 
-           style="background: linear-gradient(90deg, var(--celeste), var(--azul)); color: white; border-radius: 50px;">
-           <i class="bi bi-whatsapp me-2"></i> Solicita Información
-        </a>
+  <!-- PROMOCIONES - NUEVA SECCIÓN -->
+  <section id="promociones" class="py-5" style="background:linear-gradient(180deg,#fff,#f8fafc)">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="section-title mb-2">Promociones de Temporada</h2>
+        <p class="text-muted">Revisa nuestros flyers de campañas: <strong>Navidad</strong>, <strong>Verano</strong> y <strong>Otros</strong>.</p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="d-flex justify-content-center gap-2 mb-4">
+        <button class="btn btn-outline-dark filter-pill active" data-filter="all"><i class="bi bi-grid me-1"></i>Todo</button>
+        <button class="btn btn-outline-danger filter-pill" data-filter="navidad"><i class="bi bi-star me-1"></i>Navidad</button>
+        <button class="btn btn-outline-primary filter-pill" data-filter="verano"><i class="bi bi-sun me-1"></i>Verano</button>
+        <button class="btn btn-outline-secondary filter-pill" data-filter="otros"><i class="bi bi-tags me-1"></i>Otros</button>
+      </div>
+
+      <!-- Grid de Flyers -->
+      <div class="row g-4" id="promoGrid">
+        <!-- NAVIDAD -->
+        <div class="col-md-4 promo-item" data-category="navidad">
+          <div class="promo-card position-relative">
+            <span class="promo-badge">Navidad</span>
+            <img src="flyers/navidad1.jpg" alt="Flyer Navidad 1" loading="lazy">
+            <div class="p-3 d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="mb-0 fw-bold">Sin Intereses 6 meses</h6>
+                <small class="text-muted">Válido hasta el 31/12</small>
+              </div>
+              <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#lightbox" data-img="flyers/navidad1.jpg"><i class="bi bi-arrows-fullscreen"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 promo-item" data-category="navidad">
+          <div class="promo-card position-relative">
+            <span class="promo-badge">Navidad</span>
+            <img src="flyers/navidad2.jpg" alt="Flyer Navidad 2" loading="lazy">
+            <div class="p-3 d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="mb-0 fw-bold">Tu mejor regalo: tu terreno</h6>
+                <small class="text-muted">Hasta 31/12</small>
+              </div>
+              <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#lightbox" data-img="flyers/navidad2.jpg"><i class="bi bi-arrows-fullscreen"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- VERANO -->
+        <div class="col-md-4 promo-item" data-category="verano">
+          <div class="promo-card position-relative">
+            <span class="promo-badge" style="background:linear-gradient(45deg,#0284c7,#22c55e)">Verano</span>
+            <img src="flyers/verano1.jpg" alt="Flyer Verano 1" loading="lazy">
+            <div class="p-3 d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="mb-0 fw-bold">Verano: Bono de Escritura</h6>
+                <small class="text-muted">Próxima temporada</small>
+              </div>
+              <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#lightbox" data-img="flyers/verano1.jpg"><i class="bi bi-arrows-fullscreen"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- OTROS -->
+        <div class="col-md-4 promo-item" data-category="otros">
+          <div class="promo-card position-relative">
+            <span class="promo-badge" style="background:linear-gradient(45deg,#6b7280,#111827)">Promo</span>
+            <img src="flyers/otros1.jpg" alt="Flyer genérico 1" loading="lazy">
+            <div class="p-3 d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="mb-0 fw-bold">Días de Campo Familiar</h6>
+                <small class="text-muted">Evento especial</small>
+              </div>
+              <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#lightbox" data-img="flyers/otros1.jpg"><i class="bi bi-arrows-fullscreen"></i></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="#contacto" class="btn btn-danger btn-lg fw-bold"><i class="bi bi-gift me-2"></i>Quiero aprovechar las promos</a>
       </div>
     </div>
-
-  </div>
-</section>
-
-<!-- EFECTOS CSS -->
-<style>
-  /* Animaciones suaves */
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  /* Efecto hover 3D del mapa */
-  .mapa-3d-wrapper {
-    perspective: 1000px;
-    display: inline-block;
-  }
-  .mapa-3d {
-    transform: rotateY(0deg) rotateX(0deg);
-    transition: transform 0.6s ease, box-shadow 0.6s ease;
-    border-radius: 16px;
-  }
-  .mapa-3d:hover {
-    transform: rotateY(8deg) rotateX(6deg) scale(1.03);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  }
-</style>
-  
+  </section>
 
   <!-- CONTACTO -->
   <section id="contacto" class="contacto py-5">
@@ -385,19 +333,85 @@
   </footer>
 
   <!-- WHATSAPP FLOAT -->
-  <a href="https://wa.me/51957320891" target="_blank" class="whatsapp-float">
+  <a href="https://wa.me/51957320891" target="_blank" class="whatsapp-float" aria-label="Abrir WhatsApp">
     <i class="bi bi-whatsapp"></i>
   </a>
 
+  <!-- MODAL LIGHTBOX -->
+  <div class="modal fade" id="lightbox" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark">
+        <div class="modal-body p-0 position-relative">
+          <button type="button" class="btn btn-light position-absolute end-0 m-2" data-bs-dismiss="modal" aria-label="Cerrar"><i class="bi bi-x-lg"></i></button>
+          <img src="" id="lightboxImg" alt="Flyer" class="w-100" style="max-height:80vh;object-fit:contain;"/>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // WhatsApp
     function redirigirWhatsApp(e) {
       e.preventDefault();
-      const nombre = document.getElementById("nombre").value;
-      const mensaje = document.getElementById("mensaje").value;
+      const nombre = document.getElementById("nombre").value.trim();
+      const mensaje = document.getElementById("mensaje").value.trim();
       const texto = encodeURIComponent(`Hola, soy ${nombre}. ${mensaje}`);
       window.open(`https://wa.me/51957320891?text=${texto}`, "_blank");
     }
+
+    // Countdown hasta 31 Dic 2025 23:59 America/Lima
+    (function(){
+      const target = new Date('2025-12-31T23:59:00-05:00').getTime();
+      const el = document.getElementById('countdown');
+      function tick(){
+        const now = Date.now();
+        let diff = Math.max(0, target - now);
+        const d = Math.floor(diff / (1000*60*60*24)); diff %= (1000*60*60*24);
+        const h = Math.floor(diff / (1000*60*60)); diff %= (1000*60*60);
+        const m = Math.floor(diff / (1000*60)); diff %= (1000*60);
+        const s = Math.floor(diff / 1000);
+        el.textContent = `${d}d ${h}h ${m}m ${s}s`;
+      }
+      tick(); setInterval(tick, 1000);
+    })();
+
+    // Copos de nieve (20 elementos con duraciones aleatorias)
+    (function(){
+      const snow = document.getElementById('snow');
+      for(let i=0;i<20;i++){
+        const flake = document.createElement('i');
+        flake.style.left = Math.random()*100 + 'vw';
+        flake.style.animationDuration = (6 + Math.random()*6) + 's';
+        flake.style.opacity = (0.6 + Math.random()*0.4).toFixed(2);
+        flake.style.scale = (0.6 + Math.random()*1.2).toFixed(2);
+        snow.appendChild(flake);
+      }
+    })();
+
+    // Filtros de promociones
+    (function(){
+      const buttons = document.querySelectorAll('[data-filter]');
+      const items = document.querySelectorAll('.promo-item');
+      buttons.forEach(btn=>btn.addEventListener('click',()=>{
+        buttons.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.getAttribute('data-filter');
+        items.forEach(it=>{
+          const show = f==='all' || it.dataset.category===f;
+          it.style.display = show ? '' : 'none';
+        });
+      }));
+    })();
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    lightbox.addEventListener('show.bs.modal', function (event) {
+      const btn = event.relatedTarget;
+      const imgSrc = btn?.getAttribute('data-img') || '';
+      document.getElementById('lightboxImg').src = imgSrc;
+    });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
